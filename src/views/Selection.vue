@@ -1,8 +1,8 @@
 <template>
   <div class="hello">
-    <first-step v-if="step === 'first-step'" />
-    <second-step v-if="step === 'second-step'" />
-    <third-step v-if="step === 'third-step'" />
+    <first-step v-if="step === FIRSTSTEP" />
+    <second-step v-if="step === SECONDSTEP" />
+    <third-step v-if="step === THIRDSTEP" />
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import {
   FirstStep,
   SecondStep,
   ThirdStep
-  } from './views/components'
+  } from './components'
 
 export default {
   name: 'selection',
@@ -25,7 +25,11 @@ export default {
   },
   data: function() {
     return {
-      step: "first-step",
+      FIRSTSTEP: "FIRSTSTEP",
+      SECONDSTEP: "SECONDSTEP",
+      THIRDSTEP: "THIRDSTEP",
+
+      step: "FIRSTSTEP",
     }
   },
 }
