@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'first-set',
+  name: 'FirstStep',
   components: {
   },
   props: {

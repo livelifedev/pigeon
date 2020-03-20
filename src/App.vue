@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <landing msg="Welcome to Pigeon Breeder"/>
+    <AppLanding msg="Welcome to the Pigeon Breeder's Guild"/>
   </div>
 </template>
 
 <script>
-import Landing from './views/Landing.vue'
+import AppLanding from './views/AppLanding.vue'
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    Landing
+    AppLanding
   }
 }
 </script>

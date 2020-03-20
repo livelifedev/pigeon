@@ -1,15 +1,15 @@
 <template>
-  <div class="selection-screen">
-    <first-step
+  <div class="selection-container">
+    <FirstStep
       v-if="step === FIRSTSTEP"
       @nextStep="setStep(SECONDSTEP)"
     />
-    <second-step
+    <SecondStep
       v-if="step === SECONDSTEP"
       @prevStep="setStep(FIRSTSTEP)"
       @nextStep="setStep(THIRDSTEP)"
     />
-    <third-step
+    <ThirdStep
       v-if="step === THIRDSTEP"
       @prevStep="setStep(SECONDSTEP)"
     />
@@ -29,7 +29,7 @@ const SECONDSTEP = "SECONDSTEP";
 const THIRDSTEP = "THIRDSTEP";
 
 export default {
-  name: 'selection',
+  name: 'BreederSelection',
   components: {
     FirstStep,
     SecondStep,

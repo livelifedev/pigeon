@@ -1,18 +1,12 @@
 <template>
-  <div class="landing-container">
+  <div class="home-container">
     <h1>{{ msg }}</h1>
-    <selection />
   </div>
 </template>
 
 <script>
-import Selection from './Selection'
-
 export default {
-  name: 'landing',
-  components: {
-    Selection
-  },
+  name: 'BreederHome',
   props: {
     msg: String
   }
