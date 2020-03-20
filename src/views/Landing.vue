@@ -1,12 +1,18 @@
 <template>
-  <div class="hello">
+  <div class="landing-container">
     <h1>{{ msg }}</h1>
+    <selection />
   </div>
 </template>
 
 <script>
+import Selection from './Selection'
+
 export default {
   name: 'landing',
+  components: {
+    Selection
+  },
   props: {
     msg: String
   }
@@ -14,18 +20,4 @@ export default {
 </script>
 
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>

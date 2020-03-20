@@ -1,8 +1,18 @@
 <template>
-  <div class="hello">
-    <first-step v-if="step === FIRSTSTEP" />
-    <second-step v-if="step === SECONDSTEP" />
-    <third-step v-if="step === THIRDSTEP" />
+  <div class="selection-screen">
+    <first-step
+      v-if="step === FIRSTSTEP"
+      @nextStep="setStep(SECONDSTEP)"
+    />
+    <second-step
+      v-if="step === SECONDSTEP"
+      @prevStep="setStep(FIRSTSTEP)"
+      @nextStep="setStep(THIRDSTEP)"
+    />
+    <third-step
+      v-if="step === THIRDSTEP"
+      @prevStep="setStep(SECONDSTEP)"
+    />
   </div>
 </template>
 
@@ -11,7 +21,12 @@ import {
   FirstStep,
   SecondStep,
   ThirdStep
-  } from './components'
+} from './components'
+
+// Constants
+const FIRSTSTEP = "FIRSTSTEP";
+const SECONDSTEP = "SECONDSTEP";
+const THIRDSTEP = "THIRDSTEP";
 
 export default {
   name: 'selection',
@@ -23,31 +38,23 @@ export default {
   props: {
     msg: String
   },
-  data: function() {
+  data() {
     return {
-      FIRSTSTEP: "FIRSTSTEP",
-      SECONDSTEP: "SECONDSTEP",
-      THIRDSTEP: "THIRDSTEP",
+      FIRSTSTEP,
+      SECONDSTEP,
+      THIRDSTEP,
 
-      step: "FIRSTSTEP",
+      step: FIRSTSTEP,
     }
   },
+  methods: {
+    setStep(selectedStep) {
+      console.log('set', selectedStep);
+      this.step = selectedStep;
+    }
+  }
 }
 </script>
 
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>

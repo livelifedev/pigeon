@@ -1,6 +1,7 @@
 <template>
-  <div class="hello">
-    
+  <div class="first-step-container">
+    <h1>What</h1>
+    <button @click="nextStep()">Next</button>
   </div>
 </template>
 
@@ -10,23 +11,14 @@ export default {
   components: {
   },
   props: {
+  },
+  methods: {
+    nextStep: function() {
+            this.$emit('nextStep')
+    },
   }
 }
 </script>
 
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>
