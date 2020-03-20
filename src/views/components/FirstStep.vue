@@ -1,7 +1,7 @@
 <template>
   <div class="first-step-container">
-    <h1>What</h1>
-    <button @click="nextStep()">Next</button>
+    <h1>Please register your squab's details</h1>
+    <el-button type="info" @click="nextStep()">Next</el-button>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     nextStep: function() {
-            this.$emit('nextStep')
+      this.$emit('nextStep')
     },
   }
 }

@@ -1,24 +1,22 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <AppLanding msg="Welcome to the Pigeon Breeder's Guild"/>
+    <el-container>
+      <el-main>
+        <router-view></router-view>
+      </el-main>
+    </el-container>
   </div>
 </template>
 
 <script>
-import AppLanding from './views/AppLanding.vue'
-
 export default {
   name: 'App',
-  components: {
-    AppLanding
-  }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
