@@ -9,7 +9,7 @@
       </el-form-item>
 
       <el-form-item label="Gender">
-        <el-select v-model="form.gender" placeholder="please select a gender" inline="false">
+        <el-select v-model="form.gender" placeholder="select a gender" inline="false">
           <el-option label="Male" value="male"></el-option>
           <el-option label="Female" value="female"></el-option>
           <el-option label="Unknown" value="unknown"></el-option>
@@ -17,7 +17,16 @@
       </el-form-item>
 
       <el-form-item label="Region">
-        <el-input v-model="form.region"></el-input>
+        <el-select v-model="form.region" placeholder="select a region" popper-append-to-body="false">
+          <el-option label="Africa" value="africa"></el-option>
+          <el-option label="Antartica" value="antartica"></el-option>
+          <el-option label="Asia" value="asia"></el-option>
+          <el-option label="Australia/Oceania" value="australia-oceania"></el-option>
+          <el-option label="Europe" value="europe"></el-option>
+          <el-option label="North America" value="north-america"></el-option>
+          <el-option label="South America" value="south-america"></el-option>
+          <el-option label="Unknown" value="unknown"></el-option>
+        </el-select>
       </el-form-item>
 
       <el-form-item>
@@ -38,9 +47,8 @@ export default {
   data() {
     return {
       form: {
-        name: '',
+        name: 'djnsdn',
         gender: '',
-        dob: '',
         region: '',
       }
     }
@@ -54,4 +62,7 @@ export default {
 </script>
 
 <style scoped>
+.el-select {
+  /* display: block; */
+}
 </style>
