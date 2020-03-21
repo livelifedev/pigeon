@@ -1,18 +1,22 @@
 <template>
   <div class="selection-container">
-    <FirstStep
-      v-if="step === FIRSTSTEP"
-      @nextStep="setStep(SECONDSTEP)"
-    />
-    <SecondStep
-      v-if="step === SECONDSTEP"
-      @prevStep="setStep(FIRSTSTEP)"
-      @nextStep="setStep(THIRDSTEP)"
-    />
-    <ThirdStep
-      v-if="step === THIRDSTEP"
-      @prevStep="setStep(SECONDSTEP)"
-    />
+    <el-row type="flex" justify="center">
+      <el-col :span="8">
+        <FirstStep
+          v-if="step === FIRSTSTEP"
+          @nextStep="setStep(SECONDSTEP)"
+        />
+        <SecondStep
+          v-if="step === SECONDSTEP"
+          @prevStep="setStep(FIRSTSTEP)"
+          @nextStep="setStep(THIRDSTEP)"
+        />
+        <ThirdStep
+          v-if="step === THIRDSTEP"
+          @prevStep="setStep(SECONDSTEP)"
+        />
+      </el-col>
+    </el-row>
   </div>
 </template>
 
