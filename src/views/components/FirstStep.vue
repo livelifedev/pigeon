@@ -9,7 +9,7 @@
       </el-form-item>
 
       <el-form-item label="Gender">
-        <el-select v-model="form.gender" placeholder="select a gender" inline="false">
+        <el-select v-model="form.gender" placeholder="select a gender">
           <el-option label="Male" value="male"></el-option>
           <el-option label="Female" value="female"></el-option>
           <el-option label="Unknown" value="unknown"></el-option>
@@ -17,7 +17,7 @@
       </el-form-item>
 
       <el-form-item label="Region">
-        <el-select v-model="form.region" placeholder="select a region" popper-append-to-body="false">
+        <el-select v-model="form.region" placeholder="select a region">
           <el-option label="Africa" value="africa"></el-option>
           <el-option label="Antartica" value="antartica"></el-option>
           <el-option label="Asia" value="asia"></el-option>
@@ -30,7 +30,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="info" @click="nextStep()">Next</el-button>
+        <el-button type="info" @click="goNext()">Next</el-button>
       </el-form-item>
     </el-form>
       
@@ -54,8 +54,9 @@ export default {
     }
   },
   methods: {
-    nextStep: function() {
-      this.$emit('nextStep')
+    goNext: function() {
+      this.$emit('nextStep');
+      this.$emit('onNext', this.form);
     },
   }
 }
