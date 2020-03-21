@@ -47,7 +47,7 @@ export default {
   data() {
     return {
       form: {
-        name: 'djnsdn',
+        name: '',
         gender: '',
         region: '',
       }
