@@ -8,16 +8,17 @@
           <h3>Guild of Pigeon Breeders</h3>
 
           <div>DOB: {{ currentDate }}</div>
-          <div>Name:</div>
-          <div>Clan:</div>
-          <div>Gender:</div>
-          <div>Region:</div>
-          <div>Breed:</div>
-          <div>Element:</div>
+          <div>Name: {{ squabDetails.name }}</div>
+          <div>Clan: {{ squabDetails.clan }}</div>
+          <div>Gender: {{ squabDetails.gender }}</div>
+          <div>Region: {{ squabDetails.region }}</div>
+          <div>Breed: {{ squabDetails.primary }}/{{ squabDetails.sub }}</div>
+          <div>Element: {{ squabDetails.element }}</div>
         </el-card>
       </el-col>
     </el-row>
-    <el-button type="success">Confirm</el-button>
+    <el-button type="danger" @click="onReset">Reset</el-button>
+    <el-button type="primary" @click="onSubmit">Confirm</el-button>
   </div>
 </template>
 
@@ -26,17 +27,25 @@ import moment from 'moment';
 
 export default {
   name: 'Confirmation',
+  props: {
+    formDetails: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
-      currentDate: null,
-      formDetails: {}
+      currentDate: moment().format('MMMM DD, YYYY'),
+      squabDetails: this.formDetails
     };
   },
-  created() {
-    this.currentDate = moment().format('MMMM DD, YYYY');
-  },
   methods: {
-    onSubmit() {}
+    onReset() {
+      this.$emit('onReset');
+    },
+    onSubmit() {
+      this.$emit('onSubmit');
+    }
   }
 };
 </script>

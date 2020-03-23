@@ -2,7 +2,12 @@
   <el-main class="selection-container">
     <el-row v-if="step === CONFIRMATION" type="flex" justify="center">
       <el-col :span="12">
-        <Confirmation v-if="step === CONFIRMATION" />
+        <Confirmation
+          v-if="step === CONFIRMATION"
+          :formDetails="formDetails"
+          @onReset="handleOnReset"
+          @onSubmit="handleOnSubmit"
+        />
       </el-col>
     </el-row>
 
@@ -31,6 +36,7 @@
 </template>
 
 <script>
+import router from '../router';
 import { FirstStep, SecondStep, ThirdStep, Confirmation } from './components';
 
 export default {
@@ -62,8 +68,16 @@ export default {
     },
     handleOnNext(details) {
       this.formDetails = { ...this.formDetails, ...details };
-      console.log('next', details);
-      console.log('new details', this.formDetails);
+    },
+    handleOnReset() {
+      this.formDetails = {};
+      this.step = this.FIRSTSTEP;
+    },
+    handleOnSubmit() {
+      // TODO: Rewrite to post to backend
+      localStorage.setItem('squabDetails', JSON.stringify(this.formDetails));
+      this.formDetails = {};
+      router.push('/breeder-home');
     }
   }
 };

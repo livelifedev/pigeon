@@ -2,7 +2,7 @@
   <el-main class="landing-container">
     <img alt="Vue logo" src="../assets/logo.png" />
     <h1>"Welcome to the Guild of Pigeon Breeders."</h1>
-    <el-button type="primary" @click="handleOnEnter">Enter</el-button>
+    <el-button type="success" @click="handleOnEnter">Enter</el-button>
   </el-main>
 </template>
 
