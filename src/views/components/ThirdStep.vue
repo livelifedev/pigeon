@@ -9,7 +9,7 @@
             v-for="el in elements"
             :key="el.value"
             :label="el.label"
-            :value="el.value"
+            :value="el.label"
           >
           </el-option>
         </el-select>
@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       form: {
-        element: 'normal'
+        element: 'Normal'
       },
 
       elements: [

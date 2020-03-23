@@ -1,9 +1,8 @@
 <template>
   <el-main class="selection-container">
     <el-row v-if="step === CONFIRMATION" type="flex" justify="center">
-      <el-col :span="12">
+      <el-col :span="24" :sm="{ span: 12 }">
         <Confirmation
-          v-if="step === CONFIRMATION"
           :formDetails="formDetails"
           @onReset="handleOnReset"
           @onSubmit="handleOnSubmit"
@@ -12,7 +11,7 @@
     </el-row>
 
     <el-row v-else type="flex" justify="center">
-      <el-col :span="8">
+      <el-col :span="24" :sm="{ span: 8 }">
         <FirstStep
           v-if="step === FIRSTSTEP"
           @nextStep="setStep(SECONDSTEP)"

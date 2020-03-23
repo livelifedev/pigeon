@@ -17,7 +17,7 @@
             v-for="gender in genders"
             :key="gender.value"
             :label="gender.label"
-            :value="gender.value"
+            :value="gender.label"
           >
           </el-option>
         </el-select>
@@ -29,7 +29,7 @@
             v-for="region in regions"
             :key="region.value"
             :label="region.label"
-            :value="region.value"
+            :value="region.label"
           >
           </el-option>
         </el-select>

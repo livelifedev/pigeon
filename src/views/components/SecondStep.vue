@@ -9,7 +9,7 @@
             v-for="breed in primaryBreeds"
             :key="breed.value"
             :label="breed.label"
-            :value="breed.value"
+            :value="breed.label"
           >
           </el-option>
         </el-select>
@@ -21,7 +21,7 @@
             v-for="breed in subBreeds"
             :key="breed.value"
             :label="breed.label"
-            :value="breed.value"
+            :value="breed.label"
           >
           </el-option>
         </el-select>
@@ -41,8 +41,8 @@ export default {
   data() {
     return {
       form: {
-        primary: 'pigeon',
-        sub: 'bird'
+        primary: 'Pigeon',
+        sub: 'Bird'
       },
 
       primaryBreeds: [{ value: 'pigeon', label: 'Pigeon' }],
