@@ -19,20 +19,22 @@
           @nextStep="setStep(CONFIRMATION)"
           @onNext="handleOnNext"
         />
+        <Confirmation v-if="step === CONFIRMATION" />
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
-import { FirstStep, SecondStep, ThirdStep } from './components';
+import { FirstStep, SecondStep, ThirdStep, Confirmation } from './components';
 
 export default {
   name: 'BreederSelection',
   components: {
     FirstStep,
     SecondStep,
-    ThirdStep
+    ThirdStep,
+    Confirmation
   },
   data() {
     return {
