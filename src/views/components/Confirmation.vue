@@ -6,14 +6,36 @@
         <el-card class="box-card">
           <h2 class="card-title">BIRTH AND GUILD CERTIFICATE</h2>
           <h3>Guild of Pigeon Breeders</h3>
-
-          <div>DOB: {{ currentDate }}</div>
-          <div>Name: {{ squabDetails.name }}</div>
-          <div>Clan: {{ squabDetails.clan }}</div>
-          <div>Gender: {{ squabDetails.gender }}</div>
-          <div>Region: {{ squabDetails.region }}</div>
-          <div>Breed: {{ squabDetails.primary }}/{{ squabDetails.sub }}</div>
-          <div>Element: {{ squabDetails.element }}</div>
+          <el-row>
+            <div class="card-details">
+              <span>DOB: </span>
+              <span>{{ currentDate }}</span>
+            </div>
+            <div class="card-details">
+              <span>Name: </span>
+              <span>{{ squabDetails.name }}</span>
+            </div>
+            <div class="card-details">
+              <span>Clan: </span>
+              <span>{{ squabDetails.clan }}</span>
+            </div>
+            <div class="card-details">
+              <span>Gender: </span>
+              <span>{{ squabDetails.gender }}</span>
+            </div>
+            <div class="card-details">
+              <span>Region: </span>
+              <span>{{ squabDetails.region }}</span>
+            </div>
+            <div class="card-details">
+              <span>Breed: </span>
+              <span>{{ squabDetails.primary }}/{{ squabDetails.sub }}</span>
+            </div>
+            <div class="card-details">
+              <span>Element: </span>
+              <span>{{ squabDetails.element }}</span>
+            </div>
+          </el-row>
         </el-card>
       </el-col>
     </el-row>
@@ -55,5 +77,9 @@ export default {
   margin-bottom: 20px;
 }
 .card-title {
+}
+.card-details {
+  /* display: flex; */
+  /* justify-content: space-between; */
 }
 </style>
