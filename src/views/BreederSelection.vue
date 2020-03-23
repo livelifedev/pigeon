@@ -13,26 +13,14 @@
           @nextStep="setStep(THIRDSTEP)"
           @onNext="handleOnNext"
         />
-        <ThirdStep
-          v-if="step === THIRDSTEP"
-          @prevStep="setStep(SECONDSTEP)"
-        />
+        <ThirdStep v-if="step === THIRDSTEP" @prevStep="setStep(SECONDSTEP)" />
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
-import { 
-  FirstStep,
-  SecondStep,
-  ThirdStep
-} from './components'
-
-// Constants
-const FIRSTSTEP = "FIRSTSTEP";
-const SECONDSTEP = "SECONDSTEP";
-const THIRDSTEP = "THIRDSTEP";
+import { FirstStep, SecondStep, ThirdStep } from './components';
 
 export default {
   name: 'BreederSelection',
@@ -46,27 +34,29 @@ export default {
   },
   data() {
     return {
-      FIRSTSTEP,
-      SECONDSTEP,
-      THIRDSTEP,
+      FIRSTSTEP: 'FIRSTSTEP',
+      SECONDSTEP: 'SECONDSTEP',
+      THIRDSTEP: 'THIRDSTEP',
 
-      step: FIRSTSTEP,
+      step: null,
 
-      formDetails: {},
-    }
+      formDetails: {}
+    };
+  },
+  created() {
+    this.step = this.FIRSTSTEP;
   },
   methods: {
     setStep(selectedStep) {
-      console.log('set', selectedStep);
       this.step = selectedStep;
     },
     handleOnNext(details) {
+      this.formDetails = { ...this.formDetails, ...details };
       console.log('next', details);
-      this.formDetails = {...this.formDetails, ...details};
+      console.log('new details', this.formDetails);
     }
   }
-}
+};
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
