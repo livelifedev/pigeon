@@ -1,23 +1,24 @@
 <template>
   <div id="app">
     <el-container>
-      <el-main>
-        <router-view></router-view>
-      </el-main>
+      <el-header></el-header>
+
+      <router-view></router-view>
+
+      <el-footer></el-footer>
     </el-container>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
-}
+  name: 'App'
+};
 </script>
 
 <style>
 #app {
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

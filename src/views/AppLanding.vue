@@ -1,9 +1,9 @@
 <template>
-  <div class="landing-container">
+  <el-main class="landing-container">
     <img alt="Vue logo" src="../assets/logo.png" />
-    <h1>"Welcome to the Pigeon Breeder's Guild"</h1>
+    <h1>"Welcome to the Guild of Pigeon Breeders."</h1>
     <el-button type="primary" @click="handleOnEnter">Enter</el-button>
-  </div>
+  </el-main>
 </template>
 
 <script>

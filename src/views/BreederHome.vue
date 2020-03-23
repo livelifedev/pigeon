@@ -1,7 +1,7 @@
 <template>
-  <div class="home-container">
+  <el-main class="home-container">
     <h1>{{ msg }}</h1>
-  </div>
+  </el-main>
 </template>
 
 <script>

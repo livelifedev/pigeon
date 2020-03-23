@@ -1,6 +1,12 @@
 <template>
-  <div class="selection-container">
-    <el-row type="flex" justify="center">
+  <el-main class="selection-container">
+    <el-row v-if="step === CONFIRMATION" type="flex" justify="center">
+      <el-col :span="12">
+        <Confirmation v-if="step === CONFIRMATION" />
+      </el-col>
+    </el-row>
+
+    <el-row v-else type="flex" justify="center">
       <el-col :span="8">
         <FirstStep
           v-if="step === FIRSTSTEP"
@@ -19,10 +25,9 @@
           @nextStep="setStep(CONFIRMATION)"
           @onNext="handleOnNext"
         />
-        <Confirmation v-if="step === CONFIRMATION" />
       </el-col>
     </el-row>
-  </div>
+  </el-main>
 </template>
 
 <script>
