@@ -13,7 +13,12 @@
           @nextStep="setStep(THIRDSTEP)"
           @onNext="handleOnNext"
         />
-        <ThirdStep v-if="step === THIRDSTEP" @prevStep="setStep(SECONDSTEP)" />
+        <ThirdStep
+          v-if="step === THIRDSTEP"
+          @prevStep="setStep(SECONDSTEP)"
+          @nextStep="setStep(CONFIRMATION)"
+          @onNext="handleOnNext"
+        />
       </el-col>
     </el-row>
   </div>
@@ -29,14 +34,12 @@ export default {
     SecondStep,
     ThirdStep
   },
-  props: {
-    msg: String
-  },
   data() {
     return {
       FIRSTSTEP: 'FIRSTSTEP',
       SECONDSTEP: 'SECONDSTEP',
       THIRDSTEP: 'THIRDSTEP',
+      CONFIRMATION: 'CONFIRMATION',
 
       step: null,
 

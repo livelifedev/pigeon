@@ -38,13 +38,11 @@
 <script>
 export default {
   name: 'SecondStep',
-  components: {},
-  props: {},
   data() {
     return {
       form: {
         primary: 'pigeon',
-        sub: 'bird',
+        sub: 'bird'
       },
 
       primaryBreeds: [{ value: 'pigeon', label: 'Pigeon' }],
@@ -57,8 +55,8 @@ export default {
         { value: 'mammal', label: 'Mammal' },
         { value: 'reptile', label: 'Reptile' },
         { value: 'alien', label: 'Alien' },
-        { value: 'mythological', label: 'Mythological' },
-      ],
+        { value: 'mythological', label: 'Mythological' }
+      ]
     };
   },
   methods: {
@@ -68,8 +66,8 @@ export default {
     },
     goBack() {
       this.$emit('prevStep');
-    },
-  },
+    }
+  }
 };
 </script>
 

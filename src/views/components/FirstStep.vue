@@ -7,6 +7,10 @@
         <el-input v-model="form.name"></el-input>
       </el-form-item>
 
+      <el-form-item label="Clan">
+        <el-input v-model="form.clan"></el-input>
+      </el-form-item>
+
       <el-form-item label="Gender">
         <el-select v-model="form.gender" placeholder="select a gender">
           <el-option
@@ -41,20 +45,19 @@
 <script>
 export default {
   name: 'FirstStep',
-  components: {},
-  props: {},
   data() {
     return {
       form: {
         name: '',
+        clan: '',
         gender: '',
-        region: '',
+        region: ''
       },
 
       genders: [
         { value: 'female', label: 'Female' },
         { value: 'male', label: 'Male' },
-        { value: 'unknown', label: 'Unknown' },
+        { value: 'unknown', label: 'Unknown' }
       ],
 
       regions: [
@@ -65,16 +68,16 @@ export default {
         { value: 'europe', label: 'Europe' },
         { value: 'north-america', label: 'North America' },
         { value: 'south-america', label: 'South America' },
-        { value: 'unknown', label: 'Unknown' },
-      ],
+        { value: 'unknown', label: 'Unknown' }
+      ]
     };
   },
   methods: {
     goNext() {
       this.$emit('nextStep');
       this.$emit('onNext', this.form);
-    },
-  },
+    }
+  }
 };
 </script>
 

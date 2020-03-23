@@ -11,10 +11,6 @@ import router from '../router';
 
 export default {
   name: 'AppLanding',
-  components: {},
-  props: {
-    msg: String
-  },
   methods: {
     handleOnEnter() {
       router.push('/breeder-selection');
