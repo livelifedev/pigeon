@@ -4,38 +4,13 @@
     <el-row>
       <el-col :span="24">
         <el-card class="box-card">
-          <h2 class="card-title">BIRTH AND GUILD CERTIFICATE</h2>
+          <h2>BIRTH AND GUILD CERTIFICATE</h2>
           <h3>Guild of Pigeon Breeders</h3>
-          <el-row>
-            <div class="card-details">
-              <span>DOB: </span>
-              <span>{{ currentDate }}</span>
-            </div>
-            <div class="card-details">
-              <span>Name: </span>
-              <span>{{ squabDetails.name }}</span>
-            </div>
-            <div class="card-details">
-              <span>Clan: </span>
-              <span>{{ squabDetails.clan }}</span>
-            </div>
-            <div class="card-details">
-              <span>Gender: </span>
-              <span>{{ squabDetails.gender }}</span>
-            </div>
-            <div class="card-details">
-              <span>Region: </span>
-              <span>{{ squabDetails.region }}</span>
-            </div>
-            <div class="card-details">
-              <span>Breed: </span>
-              <span>{{ squabDetails.primary }}/{{ squabDetails.sub }}</span>
-            </div>
-            <div class="card-details">
-              <span>Element: </span>
-              <span>{{ squabDetails.element }}</span>
-            </div>
-          </el-row>
+
+          <el-table :data="tableData" :show-header="false">
+            <el-table-column prop="key"> </el-table-column>
+            <el-table-column prop="value"> </el-table-column>
+          </el-table>
         </el-card>
       </el-col>
     </el-row>
@@ -57,8 +32,36 @@ export default {
   },
   data() {
     return {
-      currentDate: moment().format('MMMM DD, YYYY'),
-      squabDetails: this.formDetails
+      tableData: [
+        {
+          key: 'DOB',
+          value: moment().format('MMMM DD, YYYY')
+        },
+        {
+          key: 'Name',
+          value: this.formDetails.name
+        },
+        {
+          key: 'Clan',
+          value: this.formDetails.clan
+        },
+        {
+          key: 'Gender',
+          value: this.formDetails.gender
+        },
+        {
+          key: 'Region',
+          value: this.formDetails.region
+        },
+        {
+          key: 'Breed',
+          value: `${this.formDetails.primary}/${this.formDetails.sub}`
+        },
+        {
+          key: 'Element',
+          value: this.formDetails.element
+        }
+      ]
     };
   },
   methods: {
@@ -76,10 +79,7 @@ export default {
 .box-card {
   margin-bottom: 20px;
 }
-.card-title {
-}
-.card-details {
-  /* display: flex; */
-  /* justify-content: space-between; */
+.el-table {
+  padding: 0 20px;
 }
 </style>
