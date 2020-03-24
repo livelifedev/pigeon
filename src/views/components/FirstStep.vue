@@ -1,17 +1,18 @@
 <template>
   <div class="first-step-container">
-    <h1>Please register your squab's details.</h1>
+    <h2>Please register your squab's details.</h2>
+    <h4>Note: A squab is a baby pigeon.</h4>
 
-    <el-form ref="form" :model="form" label-position="top">
-      <el-form-item label="Given name">
-        <el-input v-model="form.name"></el-input>
+    <el-form ref="form" :model="form" label-width="100px" label-position="left">
+      <el-form-item label="Name:">
+        <el-input v-model="form.name" placeholder="given name"></el-input>
       </el-form-item>
 
-      <el-form-item label="Flock name">
-        <el-input v-model="form.flock"></el-input>
+      <el-form-item label="Flock:">
+        <el-input v-model="form.flock" placeholder="name of pigeon flock"></el-input>
       </el-form-item>
 
-      <el-form-item label="Gender">
+      <el-form-item label="Gender:">
         <el-select v-model="form.gender" placeholder="select a gender">
           <el-option
             v-for="gender in genders"
@@ -23,7 +24,7 @@
         </el-select>
       </el-form-item>
 
-      <el-form-item label="Region">
+      <el-form-item label="Region:">
         <el-select v-model="form.region" placeholder="select a region">
           <el-option
             v-for="region in regions"
@@ -35,7 +36,7 @@
         </el-select>
       </el-form-item>
 
-      <el-form-item>
+      <el-form-item class="button-group" label-width="0">
         <el-button type="info" @click="goNext">Next</el-button>
       </el-form-item>
     </el-form>
@@ -81,4 +82,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.el-form {
+  padding-top: 10px;
+}
+.button-group {
+  text-align: center;
+  padding-top: 15px;
+}
+</style>

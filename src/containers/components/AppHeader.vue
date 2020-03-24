@@ -1,8 +1,8 @@
 <template>
   <div class="header-container">
     <el-button
-      type="success"
       icon="el-icon-s-home"
+      plain
       circle
       @click="handleOnHome"
     ></el-button>
@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     handleOnHome() {
-      router.push('/');
+      router.push('/').catch(err => err);
     }
   }
 };

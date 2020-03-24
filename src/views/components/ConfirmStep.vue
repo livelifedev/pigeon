@@ -1,6 +1,5 @@
 <template>
   <div class="confirmation-container">
-    <h1>Please confirm the registration details of your squab.</h1>
     <el-row>
       <el-col :span="24">
         <el-card class="box-card">
@@ -77,7 +76,7 @@ export default {
 
 <style scoped>
 .box-card {
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 .el-table {
   padding: 0 20px;

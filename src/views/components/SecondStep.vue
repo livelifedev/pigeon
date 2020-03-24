@@ -1,9 +1,10 @@
 <template>
   <div class="second-step-container">
-    <h1>Is your squab a half-breed?</h1>
+    <h2>Is your squab a half-breed?</h2>
+    <h4>Note: One of greatest mysteries of pigeons.</h4>
 
-    <el-form ref="form" :model="form" label-position="top">
-      <el-form-item label="Primary">
+    <el-form ref="form" :model="form" label-width="100px" label-position="left">
+      <el-form-item label="Primary:">
         <el-select v-model="form.primary" disabled placeholder="primary breed">
           <el-option
             v-for="breed in primaryBreeds"
@@ -15,7 +16,7 @@
         </el-select>
       </el-form-item>
 
-      <el-form-item label="Sub-breed">
+      <el-form-item label="Sub-breed:">
         <el-select v-model="form.sub" placeholder="secondary breed">
           <el-option
             v-for="breed in subBreeds"
@@ -27,7 +28,7 @@
         </el-select>
       </el-form-item>
 
-      <el-form-item>
+      <el-form-item class="button-group" label-width="0">
         <el-button type="info" @click="goBack">Prev</el-button>
         <el-button type="info" @click="goNext">Next</el-button>
       </el-form-item>
@@ -71,4 +72,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.el-form {
+  padding-top: 10px;
+}
+.button-group {
+  text-align: center;
+  padding-top: 15px;
+}
+</style>

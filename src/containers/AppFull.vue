@@ -21,9 +21,6 @@ export default {
 </script>
 
 <style scoped>
-/* #app {
-  color: #2c3e50;
-} */
 .app-header {
   height: 60px;
   padding: 0 10px;
@@ -31,7 +28,6 @@ export default {
   align-items: center;
 }
 .app-main {
-  text-align: center;
-  padding: 10px;
+  padding: 0 20px 20px 20px;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="third-step-container">
-    <h1>What element does your squab belong to?</h1>
+    <h2>What element is your squab?</h2>
 
     <el-form ref="form" :model="form" label-position="top">
       <el-form-item label="Element">

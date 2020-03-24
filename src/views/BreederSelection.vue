@@ -11,7 +11,7 @@
     </el-row>
 
     <el-row v-else type="flex" justify="center">
-      <el-col :span="24" :sm="{ span: 8 }">
+      <el-col :span="24" :sm="{ span: 12 }">
         <FirstStep
           v-if="step === FIRSTSTEP"
           @nextStep="setStep(SECONDSTEP)"
