@@ -1,17 +1,9 @@
 <template>
-  <el-container id="app">
-    <el-header>
-      <AppHeader />
-    </el-header>
-
-    <el-main>
-      <router-view></router-view>
-    </el-main>
-
-    <el-footer>
-      <AppFooter />
-    </el-footer>
-  </el-container>
+  <div id="app">
+    <AppHeader />
+    <router-view></router-view>
+    <AppFooter />
+  </div>
 </template>
 
 <script>
@@ -28,6 +20,9 @@ export default {
 
 <style scoped>
 #app {
+  /* font-family: 'Avenir', Helvetica, Arial, sans-serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
