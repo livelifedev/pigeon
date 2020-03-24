@@ -1,6 +1,6 @@
 <template>
   <div class="confirmation-container">
-    <h1>Please confirm the details of this certificate.</h1>
+    <h1>Please confirm the registration details of your squab.</h1>
     <el-row>
       <el-col :span="24">
         <el-card class="box-card">
@@ -23,7 +23,7 @@
 import moment from 'moment';
 
 export default {
-  name: 'Confirmation',
+  name: 'ConfirmStep',
   props: {
     formDetails: {
       type: Object,
@@ -42,8 +42,8 @@ export default {
           value: this.formDetails.name
         },
         {
-          key: 'Clan',
-          value: this.formDetails.clan
+          key: 'Flock',
+          value: this.formDetails.flock
         },
         {
           key: 'Gender',

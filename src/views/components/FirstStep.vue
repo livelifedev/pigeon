@@ -3,12 +3,12 @@
     <h1>Please register your squab's details.</h1>
 
     <el-form ref="form" :model="form" label-position="top">
-      <el-form-item label="Name">
+      <el-form-item label="Given name">
         <el-input v-model="form.name"></el-input>
       </el-form-item>
 
-      <el-form-item label="Clan">
-        <el-input v-model="form.clan"></el-input>
+      <el-form-item label="Flock name">
+        <el-input v-model="form.flock"></el-input>
       </el-form-item>
 
       <el-form-item label="Gender">
@@ -49,7 +49,7 @@ export default {
     return {
       form: {
         name: '',
-        clan: '',
+        flock: '',
         gender: '',
         region: ''
       },

@@ -17,7 +17,7 @@
 
       <el-form-item>
         <el-button type="info" @click="goBack">Prev</el-button>
-        <el-button type="info" @click="goNext">Done</el-button>
+        <el-button type="primary" @click="goNext">Done</el-button>
       </el-form-item>
     </el-form>
   </div>

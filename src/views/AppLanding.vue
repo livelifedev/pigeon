@@ -1,18 +1,37 @@
 <template>
   <el-main class="landing-container">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <h1>"Welcome to the Guild of Pigeon Breeders."</h1>
-    <el-button type="success" @click="handleOnEnter">Enter</el-button>
+    <div v-if="!isIntro">
+      <img alt="Vue logo" src="../assets/logo.png" />
+      <h1>"Welcome to the Guild of Pigeon Breeders."</h1>
+      <el-button type="success" @click="handleOnEnter">Enter</el-button>
+    </div>
+
+    <div v-else>
+      <GuildIntro />
+      <el-button type="success" @click="handleOnGo">Go</el-button>
+    </div>
   </el-main>
 </template>
 
 <script>
 import router from '../router';
+import { GuildIntro } from './components';
 
 export default {
   name: 'AppLanding',
+  components: {
+    GuildIntro
+  },
+  data() {
+    return {
+      isIntro: false
+    };
+  },
   methods: {
     handleOnEnter() {
+      this.isIntro = true;
+    },
+    handleOnGo() {
       router.push('/breeder-selection');
     }
   }

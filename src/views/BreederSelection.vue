@@ -2,7 +2,7 @@
   <el-main class="selection-container">
     <el-row v-if="step === CONFIRMATION" type="flex" justify="center">
       <el-col :span="24" :sm="{ span: 12 }">
-        <Confirmation
+        <ConfirmStep
           :formDetails="formDetails"
           @onReset="handleOnReset"
           @onSubmit="handleOnSubmit"
@@ -36,7 +36,7 @@
 
 <script>
 import router from '../router';
-import { FirstStep, SecondStep, ThirdStep, Confirmation } from './components';
+import { FirstStep, SecondStep, ThirdStep, ConfirmStep } from './components';
 
 export default {
   name: 'BreederSelection',
@@ -44,7 +44,7 @@ export default {
     FirstStep,
     SecondStep,
     ThirdStep,
-    Confirmation
+    ConfirmStep
   },
   data() {
     return {
