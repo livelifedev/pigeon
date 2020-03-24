@@ -1,7 +1,7 @@
 <template>
-  <el-main class="home-container">
+  <div class="home-container">
     <h1>Home</h1>
-  </el-main>
+  </div>
 </template>
 
 <script>
@@ -10,5 +10,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

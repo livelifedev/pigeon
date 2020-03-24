@@ -1,5 +1,5 @@
 <template>
-  <el-main class="landing-container">
+  <div class="landing-container">
     <div v-if="!isIntro">
       <img alt="Vue logo" src="../assets/logo.png" />
       <h1>"Welcome to the Guild of Pigeon Breeders."</h1>
@@ -10,7 +10,8 @@
       <GuildIntro />
       <el-button type="success" @click="handleOnGo">Go</el-button>
     </div>
-  </el-main>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>

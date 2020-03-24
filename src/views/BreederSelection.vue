@@ -1,5 +1,5 @@
 <template>
-  <el-main class="selection-container">
+  <div class="selection-container">
     <el-row v-if="step === CONFIRMATION" type="flex" justify="center">
       <el-col :span="24" :sm="{ span: 12 }">
         <ConfirmStep
@@ -31,7 +31,7 @@
         />
       </el-col>
     </el-row>
-  </el-main>
+  </div>
 </template>
 
 <script>
