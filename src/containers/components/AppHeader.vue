@@ -1,16 +1,27 @@
 <template>
-  <div>
-    <el-button type="success" icon="el-icon-s-home" circle></el-button>
+  <div class="header-container">
+    <el-button
+      type="success"
+      icon="el-icon-s-home"
+      circle
+      @click="handleOnHome"
+    ></el-button>
   </div>
 </template>
 
 <script>
+import router from '../../router';
+
 export default {
   name: 'AppHeader',
   data() {
     return {};
   },
-  methods: {}
+  methods: {
+    handleOnHome() {
+      router.push('/');
+    }
+  }
 };
 </script>
 

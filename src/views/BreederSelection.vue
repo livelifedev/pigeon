@@ -75,7 +75,6 @@ export default {
     handleOnSubmit() {
       // TODO: Rewrite to post to backend
       localStorage.setItem('squabDetails', JSON.stringify(this.formDetails));
-      this.formDetails = {};
       router.push('/breeder-home');
     }
   }

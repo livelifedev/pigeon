@@ -21,9 +21,9 @@ export default {
 </script>
 
 <style scoped>
-#app {
-  /* color: #2c3e50; */
-}
+/* #app {
+  color: #2c3e50;
+} */
 .app-header {
   height: 60px;
   padding: 0 10px;
