@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container id="app">
     <el-header>
       <AppHeader />
     </el-header>
@@ -26,4 +26,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#app {
+  text-align: center;
+  color: #2c3e50;
+}
+</style>
