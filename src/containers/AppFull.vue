@@ -1,29 +1,37 @@
 <template>
   <div id="app">
-    <AppHeader />
-    <router-view></router-view>
-    <AppFooter />
+    <div class="app-header">
+      <AppHeader />
+    </div>
+    <div class="app-main">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import { AppHeader, AppFooter } from './components';
+import { AppHeader } from './components';
 
 export default {
   name: 'AppFull',
   components: {
-    AppHeader,
-    AppFooter
+    AppHeader
   }
 };
 </script>
 
 <style scoped>
 #app {
-  /* font-family: 'Avenir', Helvetica, Arial, sans-serif; */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* color: #2c3e50; */
+}
+.app-header {
+  height: 60px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+.app-main {
   text-align: center;
-  color: #2c3e50;
+  padding: 10px;
 }
 </style>

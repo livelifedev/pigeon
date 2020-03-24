@@ -8,4 +8,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+html {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+</style>

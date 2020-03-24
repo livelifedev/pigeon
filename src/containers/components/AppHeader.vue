@@ -1,6 +1,6 @@
 <template>
   <div>
-    <i class="el-icon-s-home"></i>
+    <el-button type="success" icon="el-icon-s-home" circle></el-button>
   </div>
 </template>
 
@@ -8,14 +8,14 @@
 export default {
   name: 'AppHeader',
   data() {
-    return {
-     
-    };
+    return {};
   },
-  methods: {
-   
-  }
+  methods: {}
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.el-button {
+  font-size: 1.5rem;
+}
+</style>
