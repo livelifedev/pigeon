@@ -1,17 +1,7 @@
 <template>
   <div class="selection-container">
-    <el-row v-if="step === CONFIRMATION" type="flex" justify="center">
-      <el-col :span="24" :sm="{ span: 12 }">
-        <ConfirmStep
-          :formDetails="formDetails"
-          @onReset="handleOnReset"
-          @onSubmit="handleOnSubmit"
-        />
-      </el-col>
-    </el-row>
-
-    <el-row v-else type="flex" justify="center">
-      <el-col :span="24" :sm="{ span: 12 }">
+    <el-row  type="flex" justify="center">
+      <el-col v-if="step !== CONFIRMATION" :span="24" :sm="{ span: 12 }">
         <FirstStep
           v-if="step === FIRSTSTEP"
           @nextStep="setStep(SECONDSTEP)"
@@ -28,6 +18,14 @@
           @prevStep="setStep(SECONDSTEP)"
           @nextStep="setStep(CONFIRMATION)"
           @onNext="handleOnNext"
+        />
+      </el-col>
+
+      <el-col v-else :span="24" :sm="{ span: 12 }">
+        <ConfirmStep
+          :formDetails="formDetails"
+          @onReset="handleOnReset"
+          @onSubmit="handleOnSubmit"
         />
       </el-col>
     </el-row>
