@@ -8,10 +8,12 @@ import {
   Select,
   Option,
   Button,
+  ButtonGroup,
   Card,
   Table,
   TableColumn,
-  Icon
+  Icon,
+  Image
 } from 'element-ui';
 import lang from 'element-ui/lib/locale/lang/en'
 import locale from 'element-ui/lib/locale'
@@ -26,7 +28,9 @@ Vue.use(Input);
 Vue.use(Select);
 Vue.use(Option);
 Vue.use(Button);
+Vue.use(ButtonGroup);
 Vue.use(Card);
 Vue.use(Table);
 Vue.use(TableColumn);
 Vue.use(Icon);
+Vue.use(Image);

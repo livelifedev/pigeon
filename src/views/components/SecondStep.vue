@@ -23,14 +23,17 @@
             :key="breed.value"
             :label="breed.label"
             :value="breed.label"
+            :disabled="breed.disabled"
           >
           </el-option>
         </el-select>
       </el-form-item>
 
       <el-form-item class="button-group" label-width="0">
-        <el-button type="info" @click="goBack">Prev</el-button>
-        <el-button type="info" @click="goNext">Next</el-button>
+        <el-button-group>
+          <el-button type="info" @click="goBack">Prev</el-button>
+          <el-button type="info" @click="goNext">Next</el-button>
+        </el-button-group>
       </el-form-item>
     </el-form>
   </div>
@@ -55,8 +58,8 @@ export default {
         { value: 'invertebrate', label: 'Invertebrate' },
         { value: 'mammal', label: 'Mammal' },
         { value: 'reptile', label: 'Reptile' },
-        { value: 'alien', label: 'Alien' },
-        { value: 'mythological', label: 'Mythological' }
+        { value: 'alien', label: 'Alien', disabled: true },
+        { value: 'mythological', label: 'Mythological', disabled: true }
       ]
     };
   },

@@ -19,6 +19,7 @@
             :key="gender.value"
             :label="gender.label"
             :value="gender.label"
+            :disabled="gender.disabled"
           >
           </el-option>
         </el-select>
@@ -31,6 +32,7 @@
             :key="region.value"
             :label="region.label"
             :value="region.label"
+            :disabled="region.disabled"
           >
           </el-option>
         </el-select>
@@ -58,7 +60,7 @@ export default {
       genders: [
         { value: 'female', label: 'Female' },
         { value: 'male', label: 'Male' },
-        { value: 'unknown', label: 'Unknown' }
+        { value: 'genderless', label: 'Genderless', disabled: true }
       ],
 
       regions: [
@@ -69,7 +71,7 @@ export default {
         { value: 'europe', label: 'Europe' },
         { value: 'north-america', label: 'North America' },
         { value: 'south-america', label: 'South America' },
-        { value: 'unknown', label: 'Unknown' }
+        { value: 'unknown', label: 'Unknown', disabled: true }
       ]
     };
   },

@@ -19,8 +19,10 @@
     </el-row>
 
     <div class="button-group">
-      <el-button type="danger" @click="onReset">Reset</el-button>
-      <el-button type="primary" @click="onSubmit">Confirm</el-button>
+      <el-button-group>
+        <el-button type="danger" @click="onReset">Reset</el-button>
+        <el-button type="primary" @click="onSubmit">Confirm</el-button>
+      </el-button-group>
     </div>
   </div>
 </template>

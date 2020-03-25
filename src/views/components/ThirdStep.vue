@@ -11,14 +11,17 @@
             :key="el.value"
             :label="el.label"
             :value="el.label"
+            :disabled="el.disabled"
           >
           </el-option>
         </el-select>
       </el-form-item>
 
       <el-form-item class="button-group" label-width="0">
-        <el-button type="info" @click="goBack">Prev</el-button>
-        <el-button type="primary" @click="goNext">Done</el-button>
+        <el-button-group>
+          <el-button type="info" @click="goBack">Prev</el-button>
+          <el-button type="primary" @click="goNext">Done</el-button>
+        </el-button-group>
       </el-form-item>
     </el-form>
   </div>
@@ -38,7 +41,7 @@ export default {
         { value: 'earth', label: 'Earth' },
         { value: 'fire', label: 'Fire' },
         { value: 'water', label: 'Water' },
-        { value: 'space', label: 'Space' }
+        { value: 'space', label: 'Space', disabled: true }
       ]
     };
   },
