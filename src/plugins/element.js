@@ -13,7 +13,9 @@ import {
   Table,
   TableColumn,
   Icon,
-  Image
+  Image,
+  Tabs,
+  TabPane
 } from 'element-ui';
 import lang from 'element-ui/lib/locale/lang/en'
 import locale from 'element-ui/lib/locale'
@@ -34,3 +36,5 @@ Vue.use(Table);
 Vue.use(TableColumn);
 Vue.use(Icon);
 Vue.use(Image);
+Vue.use(Tabs);
+Vue.use(TabPane);

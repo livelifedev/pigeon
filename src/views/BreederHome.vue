@@ -10,20 +10,46 @@
     </el-row>
 
     <el-row class="action-buttons-group" type="flex" justify="center">
-      <el-col class="action-buttons" :span="24" :sm="{ span: 8 }">
+      <!-- <el-col class="action-buttons" :span="24" :sm="{ span: 8 }">
         <el-button>CARE</el-button>
         <el-button>ADVENTURE</el-button>
         <el-button>SOCIALIZE</el-button>
+        <el-button>PROFILE</el-button>
         <el-button>PIGEONDEX</el-button>
+      </el-col> -->
+
+      <el-col :span="24" :sm="{ span: 8 }">
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+          <el-tab-pane label="Health" name="health">
+            <PlaceholderUpcoming>This will display the health</PlaceholderUpcoming>
+          </el-tab-pane>
+          <el-tab-pane label="Feed" name="feed">User</el-tab-pane>
+          <el-tab-pane label="Play" name="play">Config</el-tab-pane>
+          <el-tab-pane label="Sleep" name="sleep">Role</el-tab-pane>
+          <el-tab-pane label="Groom" name="groom">Groom</el-tab-pane>
+        </el-tabs>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
+import { PlaceholderUpcoming } from './components';
+
 export default {
   name: 'BreederHome',
+  components: {
+    PlaceholderUpcoming
+  },
+  data() {
+    return {
+      activeName: 'health'
+    };
+  },
   methods: {
+    handleClick(tab, event) {
+      console.log(tab, event)
+    }
   }
 }
 </script>
