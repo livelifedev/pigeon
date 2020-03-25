@@ -11,10 +11,10 @@
 
     <el-row class="action-buttons-group" type="flex" justify="center">
       <el-col class="action-buttons" :span="24" :sm="{ span: 8 }">
-        <el-button round>CARE</el-button>
-        <el-button round>ADVENTURE</el-button>
-        <el-button round>SOCIALIZE</el-button>
-        <el-button round>PIGEONDEX</el-button>
+        <el-button>CARE</el-button>
+        <el-button>ADVENTURE</el-button>
+        <el-button>SOCIALIZE</el-button>
+        <el-button>PIGEONDEX</el-button>
       </el-col>
     </el-row>
   </div>
