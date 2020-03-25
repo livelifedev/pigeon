@@ -1,9 +1,10 @@
 <template>
   <div class="third-step-container">
-    <h2>What element is your squab?</h2>
+    <h2>What is your squab's elemental line?</h2>
+    <h4 class="text-note">Note: Dormant within every pigeon is their element, this can be heightened and manifested with training.</h4>
 
-    <el-form ref="form" :model="form" label-position="top">
-      <el-form-item label="Element">
+    <el-form ref="form" :model="form" label-width="100px" label-position="left">
+      <el-form-item label="Element:">
         <el-select v-model="form.element" placeholder="select an element">
           <el-option
             v-for="el in elements"
@@ -15,7 +16,7 @@
         </el-select>
       </el-form-item>
 
-      <el-form-item>
+      <el-form-item class="button-group" label-width="0">
         <el-button type="info" @click="goBack">Prev</el-button>
         <el-button type="primary" @click="goNext">Done</el-button>
       </el-form-item>
@@ -29,7 +30,7 @@ export default {
   data() {
     return {
       form: {
-        element: 'Normal'
+        element: 'Air'
       },
 
       elements: [
@@ -37,7 +38,6 @@ export default {
         { value: 'earth', label: 'Earth' },
         { value: 'fire', label: 'Fire' },
         { value: 'water', label: 'Water' },
-        { value: 'normal', label: 'Normal' },
         { value: 'space', label: 'Space' }
       ]
     };

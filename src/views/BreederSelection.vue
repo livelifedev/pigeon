@@ -81,4 +81,15 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+::v-deep .text-note {
+  text-align: justify;
+}
+::v-deep .el-form {
+  padding-top: 10px;
+}
+::v-deep .button-group {
+  text-align: center;
+  padding-top: 15px;
+}
+</style>

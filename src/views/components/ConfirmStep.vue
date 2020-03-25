@@ -1,20 +1,27 @@
 <template>
   <div class="confirmation-container">
-    <el-row>
+    <el-row >
       <el-col :span="24">
         <el-card class="box-card">
-          <h2>BIRTH AND GUILD CERTIFICATE</h2>
-          <h3>Guild of Pigeon Breeders</h3>
+          <h3 class="title">BIRTH AND GUILD CERTIFICATE</h3>
+          <h5 class="title">Guild of Pigeon Breeders (GPB)</h5>
 
-          <el-table :data="tableData" :show-header="false">
-            <el-table-column prop="key"> </el-table-column>
-            <el-table-column prop="value"> </el-table-column>
-          </el-table>
+          <el-row type="flex" justify="center">
+            <el-col :span="24" :sm="{ span: 16 }">
+                <el-table :data="tableData" :show-header="false">
+                  <el-table-column prop="key" width="80px"></el-table-column>
+                  <el-table-column prop="value"></el-table-column>
+                </el-table>
+            </el-col>
+          </el-row>
         </el-card>
       </el-col>
     </el-row>
-    <el-button type="danger" @click="onReset">Reset</el-button>
-    <el-button type="primary" @click="onSubmit">Confirm</el-button>
+
+    <div class="button-group">
+      <el-button type="danger" @click="onReset">Reset</el-button>
+      <el-button type="primary" @click="onSubmit">Confirm</el-button>
+    </div>
   </div>
 </template>
 
@@ -33,31 +40,31 @@ export default {
     return {
       tableData: [
         {
-          key: 'DOB',
+          key: 'DOB:',
           value: moment().format('MMMM DD, YYYY')
         },
         {
-          key: 'Name',
+          key: 'Name:',
           value: this.formDetails.name
         },
         {
-          key: 'Flock',
+          key: 'Flock:',
           value: this.formDetails.flock
         },
         {
-          key: 'Gender',
+          key: 'Gender:',
           value: this.formDetails.gender
         },
         {
-          key: 'Region',
+          key: 'Region:',
           value: this.formDetails.region
         },
         {
-          key: 'Breed',
+          key: 'Breed:',
           value: `${this.formDetails.primary}/${this.formDetails.sub}`
         },
         {
-          key: 'Element',
+          key: 'Element:',
           value: this.formDetails.element
         }
       ]
@@ -75,10 +82,11 @@ export default {
 </script>
 
 <style scoped>
-.box-card {
-  margin: 20px 0;
+.title {
+  text-align: center;
+  margin: 0 0 10px;
 }
-.el-table {
-  padding: 0 20px;
+.box-card {
+  margin: 10px 0;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="landing-container">
     <div v-if="!isIntro">
-      <img alt="Vue logo" src="../assets/logo.png" />
+      <img alt="Guild logo" src="../assets/logo.png" class="logo"/>
       <h1>Welcome to the Guild of Pigeon Breeders.</h1>
       <el-button type="success" @click="handleOnEnter">Enter</el-button>
     </div>
@@ -40,6 +40,10 @@ export default {
 </script>
 
 <style scoped>
+.logo {
+  width: 150px;
+  margin-top: 20px;
+}
 .landing-container {
   text-align: center;
 }

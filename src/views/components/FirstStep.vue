@@ -1,7 +1,7 @@
 <template>
   <div class="first-step-container">
     <h2>Please register your squab's details.</h2>
-    <h4>Note: A squab is a baby pigeon.</h4>
+    <h4 class="text-note">Note: A squab is a baby pigeon.</h4>
 
     <el-form ref="form" :model="form" label-width="100px" label-position="left">
       <el-form-item label="Name:">
@@ -82,12 +82,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.el-form {
-  padding-top: 10px;
-}
-.button-group {
-  text-align: center;
-  padding-top: 15px;
-}
-</style>
+<style scoped></style>

@@ -18,7 +18,6 @@ html {
   /* color: #05386B; */
   /* color: white; */
 }
-
 /* .el-button--success {
   background-color: #B38D97;
   border-color: #B38D97;

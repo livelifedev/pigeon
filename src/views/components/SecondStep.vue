@@ -1,7 +1,7 @@
 <template>
   <div class="second-step-container">
     <h2>Is your squab a half-breed?</h2>
-    <h4>Note: One of greatest mysteries of pigeons.</h4>
+    <h4 class="text-note">Note: Certain flocks of pigeons contain mutations in their DNA, inhereting traits of another animal group.</h4>
 
     <el-form ref="form" :model="form" label-width="100px" label-position="left">
       <el-form-item label="Primary:">
@@ -72,12 +72,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.el-form {
-  padding-top: 10px;
-}
-.button-group {
-  text-align: center;
-  padding-top: 15px;
-}
-</style>
+<style scoped></style>
