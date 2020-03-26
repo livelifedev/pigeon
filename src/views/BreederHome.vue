@@ -4,6 +4,7 @@
       <el-col class="graphics-window">
         <h4 class="pigeon-name">{{pigeonDetails.name}}</h4>
         <img :src="`./assets/squab-${avatarElement}.svg`" alt="Pigeon avatar" class="pigeon-avatar" />
+        <h4 class="pigeon-age">Age: 0 days</h4>
       </el-col>
     </el-row>
 
@@ -119,7 +120,7 @@ export default {
   margin-top: 10px;
   height: 150px;
 }
-.pigeon-name {
+.pigeon-name, .pigeon-age {
   margin: 10px 5px;
 }
 .graphics-window {
@@ -135,7 +136,7 @@ export default {
   margin: 10px 0 0 0;
 }
 .action-buttons-group {
-  margin-top: 15px;
+  margin-top: 0;
 }
 .back-button {
   position: absolute;
