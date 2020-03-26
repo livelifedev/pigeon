@@ -11,45 +11,55 @@
 
     <el-row class="action-buttons-group" type="flex" justify="center">
       <el-col v-if="action === MENU" class="action-buttons" :span="24" :sm="{ span: 8 }">
-        <el-button @click="handleOnCare">CARE</el-button>
-        <el-button>ADVENTURE</el-button>
-        <el-button>SOCIALIZE</el-button>
-        <el-button>PROFILE</el-button>
-        <el-button>PIGEONDEX</el-button>
+        <div>
+          <el-button @click="handleOnCare">CARE</el-button>
+        </div>
+        <div>
+          <el-button @click="handleOnAdventure">ADVENTURE</el-button>
+        </div>
+        <div>
+          <el-button @click="handleOnSocialize">SOCIALIZE</el-button>
+        </div>
+        <div>
+          <el-button @click="handleOnProfile">PROFILE</el-button>
+        </div>
+        <div>
+          <el-button @click="handleOnPigeondex">PIGEONDEX</el-button>
+        </div>
       </el-col>
 
       <el-col v-else :span="24" :sm="{ span: 8 }">
         <el-button class="back-button" icon="el-icon-back" plain circle size="small" @click="handleOnBack"></el-button>
-        <el-tabs v-model="activeName" @tab-click="handleClick">
-          <el-tab-pane label="Health" name="health">
-            <PlaceholderUpcoming>This will display the health</PlaceholderUpcoming>
-          </el-tab-pane>
-          <el-tab-pane label="Feed" name="feed">User</el-tab-pane>
-          <el-tab-pane label="Play" name="play">Config</el-tab-pane>
-          <el-tab-pane label="Sleep" name="sleep">Role</el-tab-pane>
-          <el-tab-pane label="Groom" name="groom">Groom</el-tab-pane>
-        </el-tabs>
+        <TabsCare v-if="action === CARE" />
+        <TabsAdventure v-if="action === ADVENTURE" />
+        <TabsSocialize v-if="action === SOCIALIZE" />
+        <TabsProfile v-if="action === PROFILE" />
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
-import { PlaceholderUpcoming } from './components';
+import { TabsCare, TabsAdventure, TabsSocialize, TabsProfile } from './components';
 
 export default {
   name: 'BreederHome',
   components: {
-    PlaceholderUpcoming
+    TabsCare,
+    TabsAdventure,
+    TabsSocialize,
+    TabsProfile
   },
   data() {
     return {
       MENU: 'MENU',
       CARE: 'CARE',
+      ADVENTURE: 'ADVENTURE',
+      SOCIALIZE: 'SOCIALIZE',
+      PROFILE: 'PROFILE',
+      PIGEONDEX: 'PIGEONDEX',
 
       action: null,
-
-      activeName: 'health'
     };
   },
   created() {
@@ -58,6 +68,18 @@ export default {
   methods: {
     handleOnCare() {
       this.action = this.CARE;
+    },
+    handleOnAdventure() {
+      this.action = this.ADVENTURE;
+    },
+    handleOnSocialize() {
+      this.action = this.SOCIALIZE;
+    },
+    handleOnProfile() {
+      this.action = this.PROFILE;
+    },
+    handleOnPigeondex() {
+      this.action = this.PIGEONDEX;
     },
 
     handleClick(tab, event) {
@@ -84,13 +106,12 @@ export default {
   flex-direction: column;
 }
 .action-buttons .el-button {
+  width: 100%;
   padding: 15px 0;
+  margin: 10px 0 0 0;
 }
 .action-buttons-group {
   margin-top: 15px;
-}
-.el-button+.el-button {
-  margin: 10px 0 0 0;
 }
 .back-button {
   position: absolute;

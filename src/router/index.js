@@ -33,7 +33,7 @@ export default new VueRouter({
       ]
     }
   ],
-  // scrollBehavior() {
-  //   return { x: 0, y: 0 }
-  // }
+  scrollBehavior() {
+    return { x: 0, y: 0 }
+  }
 });
