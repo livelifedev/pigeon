@@ -36,11 +36,15 @@
         <TabsProfile v-if="action === PROFILE" />
       </el-col>
     </el-row>
+
+    <el-dialog title="Pigeondex" :visible.sync="isPigeondex" :fullscreen="true">
+      <ModalPigeondex />
+    </el-dialog>
   </div>
 </template>
 
 <script>
-import { TabsCare, TabsAdventure, TabsSocialize, TabsProfile } from './components';
+import { TabsCare, TabsAdventure, TabsSocialize, TabsProfile, ModalPigeondex } from './components';
 
 export default {
   name: 'BreederHome',
@@ -48,7 +52,8 @@ export default {
     TabsCare,
     TabsAdventure,
     TabsSocialize,
-    TabsProfile
+    TabsProfile,
+    ModalPigeondex
   },
   data() {
     return {
@@ -57,9 +62,11 @@ export default {
       ADVENTURE: 'ADVENTURE',
       SOCIALIZE: 'SOCIALIZE',
       PROFILE: 'PROFILE',
-      PIGEONDEX: 'PIGEONDEX',
+      // PIGEONDEX: 'PIGEONDEX',
 
       action: null,
+
+      isPigeondex: false
     };
   },
   created() {
@@ -79,7 +86,10 @@ export default {
       this.action = this.PROFILE;
     },
     handleOnPigeondex() {
-      this.action = this.PIGEONDEX;
+      this.isPigeondex = true;
+    },
+    handleClosePigeondex() {
+      this.isPigeondex = false;
     },
 
     handleClick(tab, event) {

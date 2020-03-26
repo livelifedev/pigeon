@@ -15,6 +15,7 @@ import TabsCare from './home/TabsCare';
 import TabsAdventure from './home/TabsAdventure';
 import TabsSocialize from './home/TabsSocialize';
 import TabsProfile from './home/TabsProfile';
+import ModalPigeondex from './home/ModalPigeondex';
 
 export {
   PlaceholderUpcoming,
@@ -27,4 +28,5 @@ export {
   TabsAdventure,
   TabsSocialize,
   TabsProfile,
+  ModalPigeondex
 };

@@ -15,7 +15,8 @@ import {
   Icon,
   Image,
   Tabs,
-  TabPane
+  TabPane,
+  Dialog
 } from 'element-ui';
 import lang from 'element-ui/lib/locale/lang/en'
 import locale from 'element-ui/lib/locale'
@@ -38,3 +39,4 @@ Vue.use(Icon);
 Vue.use(Image);
 Vue.use(Tabs);
 Vue.use(TabPane);
+Vue.use(Dialog);
