@@ -14,6 +14,7 @@ export default {
 <style scoped>
 .title {
   margin: 0;
+  text-align: center;
 }
 .description {
   font-size: 0.8em;

@@ -1,11 +1,6 @@
 <template>
   <div class="header-container">
-    <el-button
-      icon="el-icon-s-home"
-      plain
-      circle
-      @click="handleOnHome"
-    ></el-button>
+    <el-button icon="el-icon-s-home" plain circle @click="handleOnHome"></el-button>
   </div>
 </template>
 
