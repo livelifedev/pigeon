@@ -17,7 +17,7 @@ export default {
   name: 'AppHeader',
   data() {
     return {
-      session: false,
+      session: !!localStorage.getItem('squabDetails'),
     };
   },
   methods: {

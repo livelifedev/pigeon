@@ -1,7 +1,7 @@
 <template>
   <div class="landing-container">
     <div v-if="!isIntro">
-      <img alt="Guild logo" src="../assets/logo.png" class="logo"/>
+      <img alt="Guild logo" src="../assets/logo.svg" class="logo"/>
       <h1>Welcome to the Guild of Pigeon Breeders.</h1>
       <el-button type="success" @click="handleOnEnter">Enter</el-button>
     </div>
