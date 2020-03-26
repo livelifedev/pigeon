@@ -3,7 +3,9 @@
     <div>
       <el-button icon="el-icon-s-home" plain circle @click="handleOnHome"></el-button>
     </div>
-    <h4 v-if="session" class="rank-text">Novice Breeder</h4>
+    <el-card :body-style="{ padding: '0px' }">
+      <h4 v-if="session" class="rank-text">Novice Breeder</h4>
+    </el-card>
     <div v-if="session">
       <el-button icon="el-icon-user-solid" plain circle @click="handleOnUser"></el-button>
     </div>
@@ -48,10 +50,16 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
+.el-card {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
 .el-button {
   font-size: 1.5rem;
 }
 .rank-text {
-  margin: 10px 0 0;
+  font-size: 0.8rem;
+  margin: 0 20px;
 }
 </style>

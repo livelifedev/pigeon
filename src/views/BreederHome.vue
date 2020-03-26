@@ -2,6 +2,7 @@
   <div class="home-container">
     <el-row>
       <el-col class="graphics-window">
+        <h4 class="pigeon-name">{{pigeonDetails.name}}</h4>
         <img :src="`./assets/squab-${avatarElement}.svg`" alt="Pigeon avatar" class="pigeon-avatar" />
       </el-col>
     </el-row>
@@ -117,6 +118,9 @@ export default {
 .pigeon-avatar {
   margin-top: 10px;
   height: 150px;
+}
+.pigeon-name {
+  margin: 10px 5px;
 }
 .graphics-window {
   text-align: center;
