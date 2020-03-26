@@ -1,14 +1,14 @@
 // App Landing
-import GuildIntro from './GuildIntro';
+import GuildIntro from './landing/GuildIntro';
 
 // Breeder Selection
-import FirstStep from './FirstStep'
-import SecondStep from './SecondStep'
-import ThirdStep from './ThirdStep'
-import ConfirmStep from './ConfirmStep';
+import FirstStep from './selection/FirstStep'
+import SecondStep from './selection/SecondStep'
+import ThirdStep from './selection/ThirdStep'
+import ConfirmStep from './selection/ConfirmStep';
 
 // Placeholders
-import PlaceholderUpcoming from './PlaceholderUpcoming';
+import PlaceholderUpcoming from './utils/PlaceholderUpcoming';
 
 export {
   GuildIntro,

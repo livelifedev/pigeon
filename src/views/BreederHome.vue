@@ -19,7 +19,7 @@
       </el-col>
 
       <el-col v-else :span="24" :sm="{ span: 8 }">
-        <el-button class="back-button" icon="el-icon-back" plain circle size="mini" @click="handleOnBack"></el-button>
+        <el-button class="back-button" icon="el-icon-back" plain circle size="small" @click="handleOnBack"></el-button>
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane label="Health" name="health">
             <PlaceholderUpcoming>This will display the health</PlaceholderUpcoming>
