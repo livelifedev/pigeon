@@ -3,16 +3,16 @@
     <h2>Please register your squab's details.</h2>
     <h4 class="text-note">Note: A squab is a baby pigeon.</h4>
 
-    <el-form ref="form" :model="form" label-width="100px" label-position="left">
-      <el-form-item label="Name:">
+    <el-form ref="form" :model="form" label-width="100px" label-position="left" :rules="rules" hide-required-asterisk>
+      <el-form-item label="Name:" prop="name">
         <el-input v-model="form.name" placeholder="given name"></el-input>
       </el-form-item>
 
-      <el-form-item label="Flock:">
+      <el-form-item label="Flock:" prop="flock">
         <el-input v-model="form.flock" placeholder="name of pigeon flock"></el-input>
       </el-form-item>
 
-      <el-form-item label="Gender:">
+      <el-form-item label="Gender:" prop="gender">
         <el-select v-model="form.gender" placeholder="select a gender">
           <el-option
             v-for="gender in genders"
@@ -25,7 +25,7 @@
         </el-select>
       </el-form-item>
 
-      <el-form-item label="Region:">
+      <el-form-item label="Region:" prop="region">
         <el-select v-model="form.region" placeholder="select a region">
           <el-option
             v-for="region in regions"
@@ -72,13 +72,24 @@ export default {
         { value: 'north-america', label: 'North America' },
         { value: 'south-america', label: 'South America' },
         { value: 'unknown', label: 'Unknown', disabled: true }
-      ]
+      ],
+
+      rules: {
+        name: [{required: true}],
+        flock: [{required: true}],
+        gender: [{required: true}],
+        region: [{required: true}]
+      }
     };
   },
   methods: {
     goNext() {
-      this.$emit('nextStep');
-      this.$emit('onNext', this.form);
+      this.$refs.form.validate((valid) => { 
+        if (valid) {
+          this.$emit('nextStep');
+          this.$emit('onNext', this.form);
+        }
+      });
     }
   }
 };

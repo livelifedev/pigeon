@@ -3,8 +3,8 @@
     <h2>Is your squab a half-breed?</h2>
     <h4 class="text-note">Note: Certain flocks of pigeons contain mutations in their DNA, inhereting traits of another animal group.</h4>
 
-    <el-form ref="form" :model="form" label-width="100px" label-position="left">
-      <el-form-item label="Primary:">
+    <el-form ref="form" :model="form" label-width="100px" label-position="left" :rules="rules" hide-required-asterisk>
+      <el-form-item label="Primary:" prop="primary">
         <el-select v-model="form.primary" disabled placeholder="primary breed">
           <el-option
             v-for="breed in primaryBreeds"
@@ -16,7 +16,7 @@
         </el-select>
       </el-form-item>
 
-      <el-form-item label="Sub-breed:">
+      <el-form-item label="Sub-breed:" prop="sub">
         <el-select v-model="form.sub" placeholder="secondary breed">
           <el-option
             v-for="breed in subBreeds"
@@ -60,13 +60,22 @@ export default {
         { value: 'reptile', label: 'Reptile' },
         { value: 'alien', label: 'Alien', disabled: true },
         { value: 'mythological', label: 'Mythological', disabled: true }
-      ]
+      ],
+
+      rules: {
+        primary: [{required: true}],
+        sub: [{required: true}],
+      }
     };
   },
   methods: {
     goNext() {
-      this.$emit('nextStep');
-      this.$emit('onNext', this.form);
+      this.$refs.form.validate((valid) => { 
+        if (valid) {
+          this.$emit('nextStep');
+          this.$emit('onNext', this.form);
+        }
+      });
     },
     goBack() {
       this.$emit('prevStep');

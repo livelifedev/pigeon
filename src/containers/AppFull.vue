@@ -22,6 +22,7 @@ export default {
 
 <style scoped>
 .app-header {
+  display: flex;
   padding: 0 10px;
   height: 60px;
 }

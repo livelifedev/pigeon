@@ -3,8 +3,8 @@
     <h2>What is your squab's elemental line?</h2>
     <h4 class="text-note">Note: Dormant within pigeons is a hidden power, this can be trained and manifested.</h4>
 
-    <el-form ref="form" :model="form" label-width="100px" label-position="left">
-      <el-form-item label="Element:">
+    <el-form ref="form" :model="form" label-width="100px" label-position="left" :rules="rules" hide-required-asterisk>
+      <el-form-item label="Element:" prop="element">
         <el-select v-model="form.element" placeholder="select an element">
           <el-option
             v-for="el in elements"
@@ -41,14 +41,22 @@ export default {
         { value: 'earth', label: 'Earth' },
         { value: 'fire', label: 'Fire' },
         { value: 'water', label: 'Water' },
-        { value: 'space', label: 'Space', disabled: true }
-      ]
+        { value: 'void', label: 'Void', disabled: true }
+      ],
+
+      rules: {
+        element: [{required: true}],
+      }
     };
   },
   methods: {
     goNext() {
-      this.$emit('nextStep');
-      this.$emit('onNext', this.form);
+      this.$refs.form.validate((valid) => { 
+        if (valid) {
+          this.$emit('nextStep');
+          this.$emit('onNext', this.form);
+        }
+      });
     },
     goBack() {
       this.$emit('prevStep');
