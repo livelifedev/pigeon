@@ -31,6 +31,10 @@ export default new VueRouter({
           component: BreederHome
         }
       ]
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ],
   scrollBehavior() {

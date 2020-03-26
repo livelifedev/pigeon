@@ -23,6 +23,7 @@ export default {
 <style scoped>
 .app-header {
   padding: 0 10px;
+  height: 60px;
 }
 .app-main {
   padding: 0 20px 20px 20px;

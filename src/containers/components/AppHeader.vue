@@ -3,9 +3,9 @@
     <div>
       <el-button icon="el-icon-s-home" plain circle @click="handleOnHome"></el-button>
     </div>
-    <h4>Novice Breeder</h4>
-    <div>
-    <el-button icon="el-icon-user-solid" plain circle @click="handleOnUser"></el-button>
+    <h4 v-if="session" class="rank-text">Novice Breeder</h4>
+    <div v-if="session">
+      <el-button icon="el-icon-user-solid" plain circle @click="handleOnUser"></el-button>
     </div>
   </div>
 </template>
@@ -16,7 +16,9 @@ import router from '../../router';
 export default {
   name: 'AppHeader',
   data() {
-    return {};
+    return {
+      session: false,
+    };
   },
   methods: {
     handleOnHome() {
@@ -24,6 +26,16 @@ export default {
     },
     handleOnUser() {
       router.push('/breeder-home').catch(err => err);
+    }
+  },
+  // TODO: Remove watcher after implementing Vuex
+  watch: {
+    '$route.path'(to) {
+      this.session = !!localStorage.getItem('squabDetails');
+      // TODO: Implement router guard when auth has been setup
+      if (to === '/breeder-home' && !this.session) {
+        router.push('/');
+      }
     }
   }
 };
@@ -38,5 +50,8 @@ export default {
 }
 .el-button {
   font-size: 1.5rem;
+}
+.rank-text {
+  margin: 10px 0 0;
 }
 </style>
