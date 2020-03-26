@@ -17,6 +17,6 @@ export default {
   text-align: center;
 }
 .description {
-  font-size: 0.8em;
+  font-size: 1em;
 }
 </style>
