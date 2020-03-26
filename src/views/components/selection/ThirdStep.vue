@@ -1,7 +1,7 @@
 <template>
   <div class="third-step-container">
     <h2>What is your squab's elemental line?</h2>
-    <h4 class="text-note">Note: Dormant within pigeons is a hidden power, this can be trained and manifested.</h4>
+    <h4 class="text-note">Note: Dormant within pigeons are a hidden power, this can be trained and manifested.</h4>
 
     <el-form ref="form" :model="form" label-width="100px" label-position="left" :rules="rules" hide-required-asterisk>
       <el-form-item label="Element:" prop="element">

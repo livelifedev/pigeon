@@ -125,7 +125,7 @@ export default {
 }
 .back-button {
   position: absolute;
-  top: 45px;
+  top: -40px;
   z-index: 1;
 }
 </style>

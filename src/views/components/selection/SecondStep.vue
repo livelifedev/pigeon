@@ -1,7 +1,7 @@
 <template>
   <div class="second-step-container">
     <h2>Is your squab a half-breed?</h2>
-    <h4 class="text-note">Note: Certain flocks of pigeons contain mutations in their DNA, inhereting traits of another animal group.</h4>
+    <h4 class="text-note">Note: Certain flocks of pigeon contain mutations in their DNA, inhereting traits of another animal group.</h4>
 
     <el-form ref="form" :model="form" label-width="100px" label-position="left" :rules="rules" hide-required-asterisk>
       <el-form-item label="Primary:" prop="primary">
