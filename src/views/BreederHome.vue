@@ -2,10 +2,7 @@
   <div class="home-container">
     <el-row>
       <el-col class="graphics-window">
-        <el-image
-          src="https://via.placeholder.com/300"
-          fit="cover"
-        ></el-image>
+        <img :src="`./assets/squab-${avatarElement}.svg`" alt="Pigeon avatar" class="pigeon-avatar" />
       </el-col>
     </el-row>
 
@@ -44,6 +41,7 @@
 </template>
 
 <script>
+import router from '../router';
 import { TabsCare, TabsAdventure, TabsSocialize, TabsProfile, ModalPigeondex } from './components';
 
 export default {
@@ -64,15 +62,28 @@ export default {
       PROFILE: 'PROFILE',
       // PIGEONDEX: 'PIGEONDEX',
 
+      pigeonDetails: null,
+
       action: null,
 
-      isPigeondex: false
+      isPigeondex: false,
+
+      avatarElement: null,
     };
   },
   created() {
-    this.action = this.MENU;
+    this.getPigeonDetails();
+    if (this.pigeonDetails) {
+      this.avatarElement = this.pigeonDetails.element.toLowerCase();
+      this.action = this.MENU;
+    } else {
+      router.push('/');
+    }
   },
   methods: {
+    getPigeonDetails() {
+      this.pigeonDetails = JSON.parse(localStorage.getItem('squabDetails'));
+    },
     handleOnCare() {
       this.action = this.CARE;
     },
@@ -91,9 +102,9 @@ export default {
     handleClosePigeondex() {
       this.isPigeondex = false;
     },
-
-    handleClick(tab, event) {
-      console.log(tab, event)
+    handleClick() {
+      // console.log(tab, event)
+      return true;
     },
     handleOnBack() {
       this.action = this.MENU;
@@ -103,10 +114,9 @@ export default {
 </script>
 
 <style scoped>
-.el-image {
+.pigeon-avatar {
   margin-top: 10px;
-  width: 250px;
-  height: 200px;
+  height: 150px;
 }
 .graphics-window {
   text-align: center;

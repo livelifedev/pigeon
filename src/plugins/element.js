@@ -13,7 +13,6 @@ import {
   Table,
   TableColumn,
   Icon,
-  Image,
   Tabs,
   TabPane,
   Dialog
@@ -36,7 +35,6 @@ Vue.use(Card);
 Vue.use(Table);
 Vue.use(TableColumn);
 Vue.use(Icon);
-Vue.use(Image);
 Vue.use(Tabs);
 Vue.use(TabPane);
 Vue.use(Dialog);
