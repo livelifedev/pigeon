@@ -22,10 +22,7 @@ export default {
 
 <style scoped>
 .app-header {
-  height: 60px;
   padding: 0 10px;
-  display: flex;
-  align-items: center;
 }
 .app-main {
   padding: 0 20px 20px 20px;
