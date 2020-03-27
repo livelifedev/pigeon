@@ -28,7 +28,14 @@ export default new VueRouter({
         },
         {
           path: 'breeder-home',
-          component: BreederHome
+          component: BreederHome,
+          beforeEnter: (to, from, next) => {
+            if (localStorage.getItem('squabDetails')) {
+              next();
+            } else {
+              next('/');
+            }
+          }
         }
       ]
     },
@@ -38,6 +45,6 @@ export default new VueRouter({
     }
   ],
   scrollBehavior() {
-    return { x: 0, y: 0 }
+    return { x: 0, y: 0 };
   }
 });

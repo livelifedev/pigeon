@@ -60,7 +60,6 @@
 
 <script>
 import moment from 'moment';
-import router from '../router';
 import {
   TabsCare,
   TabsAdventure,
@@ -97,12 +96,8 @@ export default {
   },
   created() {
     this.getPigeonDetails();
-    if (this.pigeonDetails) {
-      this.avatarElement = this.pigeonDetails.element.toLowerCase();
-      this.action = this.MENU;
-    } else {
-      router.push('/');
-    }
+    this.avatarElement = this.pigeonDetails.element.toLowerCase();
+    this.action = this.MENU;
   },
   computed: {
     calcAge() {
