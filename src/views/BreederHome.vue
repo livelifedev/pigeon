@@ -20,16 +20,16 @@
         :sm="{ span: 8 }"
       >
         <div>
-          <el-button @click="handleOnCare">CARE</el-button>
+          <el-button @click="setAction(CARE)">CARE</el-button>
         </div>
         <div>
-          <el-button @click="handleOnAdventure">ADVENTURE</el-button>
+          <el-button @click="setAction(ADVENTURE)">ADVENTURE</el-button>
         </div>
         <div>
-          <el-button @click="handleOnSocialize">SOCIALIZE</el-button>
+          <el-button @click="setAction(SOCIALIZE)">SOCIALIZE</el-button>
         </div>
         <div>
-          <el-button @click="handleOnProfile">PROFILE</el-button>
+          <el-button @click="setAction(PROFILE)">PROFILE</el-button>
         </div>
         <div>
           <el-button @click="handleOnPigeondex">PIGEONDEX</el-button>
@@ -43,7 +43,7 @@
           plain
           circle
           size="small"
-          @click="handleOnBack"
+          @click="handleOnAction(MENU)"
         ></el-button>
         <TabsCare v-if="action === CARE" />
         <TabsAdventure v-if="action === ADVENTURE" />
@@ -85,7 +85,6 @@ export default {
       ADVENTURE: 'ADVENTURE',
       SOCIALIZE: 'SOCIALIZE',
       PROFILE: 'PROFILE',
-      // PIGEONDEX: 'PIGEONDEX',
 
       pigeonDetails: null,
 
@@ -114,26 +113,11 @@ export default {
     getPigeonDetails() {
       this.pigeonDetails = JSON.parse(localStorage.getItem('squabDetails'));
     },
-    handleOnCare() {
-      this.action = this.CARE;
-    },
-    handleOnAdventure() {
-      this.action = this.ADVENTURE;
-    },
-    handleOnSocialize() {
-      this.action = this.SOCIALIZE;
-    },
-    handleOnProfile() {
-      this.action = this.PROFILE;
+    setAction(actionName) {
+      this.action = actionName;
     },
     handleOnPigeondex() {
       this.isPigeondex = true;
-    },
-    handleClosePigeondex() {
-      this.isPigeondex = false;
-    },
-    handleOnBack() {
-      this.action = this.MENU;
     }
   }
 };
