@@ -1,6 +1,6 @@
 <template>
   <div class="confirmation-container">
-    <el-row >
+    <el-row>
       <el-col :span="24">
         <el-card class="box-card">
           <h3 class="title">BIRTH AND GUILD CERTIFICATE</h3>
@@ -8,10 +8,10 @@
 
           <el-row type="flex" justify="center">
             <el-col :span="24" :sm="{ span: 16 }">
-                <el-table :data="tableData" :show-header="false">
-                  <el-table-column prop="key" width="80px"></el-table-column>
-                  <el-table-column prop="value"></el-table-column>
-                </el-table>
+              <el-table :data="tableData" :show-header="false">
+                <el-table-column prop="key" width="80px"></el-table-column>
+                <el-table-column prop="value"></el-table-column>
+              </el-table>
             </el-col>
           </el-row>
         </el-card>
@@ -28,8 +28,6 @@
 </template>
 
 <script>
-import moment from 'moment';
-
 export default {
   name: 'ConfirmStep',
   props: {
@@ -43,7 +41,7 @@ export default {
       tableData: [
         {
           key: 'DOB:',
-          value: moment().format('MMMM DD, YYYY')
+          value: this.formDetails.dob
         },
         {
           key: 'Name:',

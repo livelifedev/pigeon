@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import moment from 'moment';
 import router from '../router';
 import { FirstStep, SecondStep, ThirdStep, ConfirmStep } from './components';
 
@@ -53,7 +54,7 @@ export default {
 
       step: null,
 
-      formDetails: {}
+      formDetails: { dob: moment().format('MMMM DD, YYYY') }
     };
   },
   created() {
@@ -67,7 +68,7 @@ export default {
       this.formDetails = { ...this.formDetails, ...details };
     },
     handleOnReset() {
-      this.formDetails = {};
+      this.formDetails = { dob: moment().format('MMMM DD, YYYY') };
       this.step = this.FIRSTSTEP;
     },
     handleOnSubmit() {
