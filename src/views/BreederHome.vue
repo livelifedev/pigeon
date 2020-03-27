@@ -43,7 +43,7 @@
           plain
           circle
           size="small"
-          @click="handleOnAction(MENU)"
+          @click="setAction(MENU)"
         ></el-button>
         <TabsCare v-if="action === CARE" />
         <TabsAdventure v-if="action === ADVENTURE" />
