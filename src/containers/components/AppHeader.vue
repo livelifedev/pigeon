@@ -9,9 +9,9 @@
       ></el-button>
     </div>
     <el-card :body-style="{ padding: '0px' }">
-      <h4 v-if="session" class="rank-text">Novice Breeder</h4>
+      <h4 v-if="isActiveBreeder" class="rank-text">Novice Breeder</h4>
     </el-card>
-    <div v-if="session">
+    <div v-if="isActiveBreeder">
       <el-button
         icon="el-icon-user-solid"
         plain
@@ -23,27 +23,18 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import router from '../../router';
 
 export default {
   name: 'AppHeader',
-  data() {
-    return {
-      session: !!localStorage.getItem('squabDetails')
-    };
-  },
+  computed: mapGetters(['isActiveBreeder']),
   methods: {
     handleOnHome() {
       router.push('/').catch(err => err);
     },
     handleOnUser() {
       router.push('/breeder-home').catch(err => err);
-    }
-  },
-  // TODO: Remove watcher after implementing Vuex
-  watch: {
-    '$route.path'() {
-      this.session = !!localStorage.getItem('squabDetails');
     }
   }
 };

@@ -30,6 +30,7 @@ export default new VueRouter({
           path: 'breeder-home',
           component: BreederHome,
           beforeEnter: (to, from, next) => {
+            // TODO: Change to get from Vuex store
             if (localStorage.getItem('squabDetails')) {
               next();
             } else {

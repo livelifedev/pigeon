@@ -106,6 +106,7 @@ export default {
   },
   methods: {
     getPigeonDetails() {
+      // TODO: Change to get from Vuex store
       this.pigeonDetails = JSON.parse(localStorage.getItem('squabDetails'));
     },
     setAction(actionName) {

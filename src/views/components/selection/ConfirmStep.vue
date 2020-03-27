@@ -7,7 +7,7 @@
           <h5 class="title">Guild of Pigeon Breeders (GPB)</h5>
 
           <el-row type="flex" justify="center">
-            <el-col :span="24" :sm="{ span: 16 }">
+            <el-col :span="24" :sm="{ span: 16 }" class="certificate-wrapper">
               <el-table :data="tableData" :show-header="false">
                 <el-table-column prop="key" width="80px"></el-table-column>
                 <el-table-column prop="value"></el-table-column>
@@ -90,5 +90,8 @@ export default {
 }
 .box-card {
   margin: 10px 0;
+}
+.certificate-wrapper {
+  max-width: 300px;
 }
 </style>

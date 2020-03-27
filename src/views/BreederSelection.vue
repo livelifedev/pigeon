@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import moment from 'moment';
 import router from '../router';
 import { FirstStep, SecondStep, ThirdStep, ConfirmStep } from './components';
@@ -61,6 +62,8 @@ export default {
     this.step = this.FIRSTSTEP;
   },
   methods: {
+    ...mapActions(['startSession']),
+
     setStep(selectedStep) {
       this.step = selectedStep;
     },
@@ -74,6 +77,7 @@ export default {
     handleOnSubmit() {
       // TODO: Rewrite to post to backend
       localStorage.setItem('squabDetails', JSON.stringify(this.formDetails));
+      this.startSession(this.formDetails);
       router.push('/breeder-home');
     }
   }
