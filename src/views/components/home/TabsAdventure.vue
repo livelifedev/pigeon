@@ -1,5 +1,5 @@
 <template>
-  <el-tabs v-model="activeName" @tab-click="handleClick">
+  <el-tabs v-model="activeName">
     <el-tab-pane label="Quests" name="quests">
       <PlaceholderUpcoming>Take on quests from the guild to earn rewards.</PlaceholderUpcoming>
     </el-tab-pane>
@@ -24,13 +24,6 @@ export default {
     return {
       activeName: 'quests'
     };
-  },
-  created() {
-  },
-  methods: {
-    handleClick(tab, event) {
-      console.log(tab, event)
-    },
   }
 }
 </script>

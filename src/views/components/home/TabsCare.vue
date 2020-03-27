@@ -1,5 +1,5 @@
 <template>
-  <el-tabs v-model="activeName" @tab-click="handleClick">
+  <el-tabs v-model="activeName">
     <el-tab-pane label="Health" name="health">
       <PlaceholderUpcoming>Upcoming feature...</PlaceholderUpcoming>
     </el-tab-pane>
@@ -30,13 +30,6 @@ export default {
     return {
       activeName: 'health'
     };
-  },
-  created() {
-  },
-  methods: {
-    handleClick(tab, event) {
-      console.log(tab, event)
-    },
   }
 }
 </script>

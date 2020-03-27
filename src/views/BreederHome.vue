@@ -2,14 +2,23 @@
   <div class="home-container">
     <el-row>
       <el-col class="graphics-window">
-        <h4 class="pigeon-name">{{pigeonDetails.name}}</h4>
-        <img :src="`./assets/squab-${avatarElement}.svg`" alt="Pigeon avatar" class="pigeon-avatar" />
-        <h4 class="pigeon-age">Age: 0 days</h4>
+        <h4 class="pigeon-name">{{ pigeonDetails.name }}</h4>
+        <img
+          :src="`./assets/squab-${avatarElement}.svg`"
+          alt="Pigeon avatar"
+          class="pigeon-avatar"
+        />
+        <h4 class="pigeon-age">Age: {{ calcAge }} days</h4>
       </el-col>
     </el-row>
 
     <el-row class="action-buttons-group" type="flex" justify="center">
-      <el-col v-if="action === MENU" class="action-buttons" :span="24" :sm="{ span: 8 }">
+      <el-col
+        v-if="action === MENU"
+        class="action-buttons"
+        :span="24"
+        :sm="{ span: 8 }"
+      >
         <div>
           <el-button @click="handleOnCare">CARE</el-button>
         </div>
@@ -28,7 +37,14 @@
       </el-col>
 
       <el-col v-else :span="24" :sm="{ span: 8 }">
-        <el-button class="back-button" icon="el-icon-back" plain circle size="small" @click="handleOnBack"></el-button>
+        <el-button
+          class="back-button"
+          icon="el-icon-back"
+          plain
+          circle
+          size="small"
+          @click="handleOnBack"
+        ></el-button>
         <TabsCare v-if="action === CARE" />
         <TabsAdventure v-if="action === ADVENTURE" />
         <TabsSocialize v-if="action === SOCIALIZE" />
@@ -43,8 +59,15 @@
 </template>
 
 <script>
+import moment from 'moment';
 import router from '../router';
-import { TabsCare, TabsAdventure, TabsSocialize, TabsProfile, ModalPigeondex } from './components';
+import {
+  TabsCare,
+  TabsAdventure,
+  TabsSocialize,
+  TabsProfile,
+  ModalPigeondex
+} from './components';
 
 export default {
   name: 'BreederHome',
@@ -70,7 +93,7 @@ export default {
 
       isPigeondex: false,
 
-      avatarElement: null,
+      avatarElement: null
     };
   },
   created() {
@@ -80,6 +103,11 @@ export default {
       this.action = this.MENU;
     } else {
       router.push('/');
+    }
+  },
+  computed: {
+    calcAge() {
+      return moment().diff(moment.unix(this.pigeonDetails.dob), 'days');
     }
   },
   methods: {
@@ -104,15 +132,11 @@ export default {
     handleClosePigeondex() {
       this.isPigeondex = false;
     },
-    handleClick() {
-      // console.log(tab, event)
-      return true;
-    },
     handleOnBack() {
       this.action = this.MENU;
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -120,7 +144,8 @@ export default {
   margin-top: 10px;
   height: 150px;
 }
-.pigeon-name, .pigeon-age {
+.pigeon-name,
+.pigeon-age {
   margin: 10px 5px;
 }
 .graphics-window {

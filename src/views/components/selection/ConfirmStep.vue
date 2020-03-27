@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
   name: 'ConfirmStep',
   props: {
@@ -41,7 +43,7 @@ export default {
       tableData: [
         {
           key: 'DOB:',
-          value: this.formDetails.dob
+          value: moment.unix(this.formDetails.dob).format('MMMM DD, YYYY')
         },
         {
           key: 'Name:',

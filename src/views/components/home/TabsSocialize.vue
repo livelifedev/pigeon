@@ -1,5 +1,5 @@
 <template>
-  <el-tabs v-model="activeName" @tab-click="handleClick">
+  <el-tabs v-model="activeName">
     <el-tab-pane label="Meet" name="meet">
       <PlaceholderUpcoming>Meet other pigeons in a tinder swipe fashion.</PlaceholderUpcoming>
     </el-tab-pane>
@@ -24,13 +24,6 @@ export default {
     return {
       activeName: 'meet'
     };
-  },
-  created() {
-  },
-  methods: {
-    handleClick(tab, event) {
-      console.log(tab, event)
-    },
   }
 }
 </script>

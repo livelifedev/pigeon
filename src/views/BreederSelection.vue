@@ -54,7 +54,7 @@ export default {
 
       step: null,
 
-      formDetails: { dob: moment().format('MMMM DD, YYYY') }
+      formDetails: { dob: moment().unix() }
     };
   },
   created() {
@@ -68,7 +68,7 @@ export default {
       this.formDetails = { ...this.formDetails, ...details };
     },
     handleOnReset() {
-      this.formDetails = { dob: moment().format('MMMM DD, YYYY') };
+      this.formDetails = { dob: moment().unix() };
       this.step = this.FIRSTSTEP;
     },
     handleOnSubmit() {
