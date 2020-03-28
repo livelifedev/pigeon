@@ -1,5 +1,5 @@
 <template>
-  <el-card class="box-card">
+  <el-card>
     <h3 class="title">Upcoming Feature.</h3>
     <p class="description"><slot></slot></p>
   </el-card>
@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'PlaceholderUpcoming',
+  name: 'PlaceholderUpcoming'
 };
 </script>
 
@@ -17,6 +17,6 @@ export default {
   text-align: center;
 }
 .description {
-  font-size: 1em;
+  font-size: 1rem;
 }
 </style>

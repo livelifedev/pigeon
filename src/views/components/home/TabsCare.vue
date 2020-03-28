@@ -1,10 +1,10 @@
 <template>
   <el-tabs v-model="activeName">
     <el-tab-pane label="Health" name="health">
-      <PlaceholderUpcoming>Upcoming feature...</PlaceholderUpcoming>
+      <CareHealth />
     </el-tab-pane>
     <el-tab-pane label="Feed" name="feed">
-      <PlaceholderUpcoming>Upcoming feature...</PlaceholderUpcoming>
+      <TabTemplate><CareFeed /></TabTemplate>
     </el-tab-pane>
     <el-tab-pane label="Play" name="play">
       <PlaceholderUpcoming>Upcoming feature...</PlaceholderUpcoming>
@@ -20,18 +20,22 @@
 
 <script>
 import { PlaceholderUpcoming } from '..';
+import { TabTemplate, CareHealth, CareFeed } from './subcomponents';
 
 export default {
   name: 'TabsCare',
   components: {
-    PlaceholderUpcoming
+    PlaceholderUpcoming,
+    TabTemplate,
+    CareHealth,
+    CareFeed
   },
   data() {
     return {
       activeName: 'health'
     };
   }
-}
+};
 </script>
 
 <style scoped></style>

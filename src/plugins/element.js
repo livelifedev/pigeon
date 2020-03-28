@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from 'vue';
 import {
   Row,
   Col,
@@ -15,10 +15,12 @@ import {
   Icon,
   Tabs,
   TabPane,
-  Dialog
+  Dialog,
+  Progress,
+  TimeSelect
 } from 'element-ui';
-import lang from 'element-ui/lib/locale/lang/en'
-import locale from 'element-ui/lib/locale'
+import lang from 'element-ui/lib/locale/lang/en';
+import locale from 'element-ui/lib/locale';
 
 locale.use(lang);
 
@@ -38,3 +40,5 @@ Vue.use(Icon);
 Vue.use(Tabs);
 Vue.use(TabPane);
 Vue.use(Dialog);
+Vue.use(Progress);
+Vue.use(TimeSelect);

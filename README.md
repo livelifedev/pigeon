@@ -18,13 +18,12 @@ Deployed: http://guild-of-pigeon-breeders.s3-website-ap-southeast-2.amazonaws.co
   -- play/exercise - during day
 
 - Feed - Pigeons eat 2 times a day, feeding options include meal or snack
+  -- initial feed schedule set up and info on breed of pigeon and consume amount
   -- feed pigeon meal in morning (8am) and meal in evening (4pm), 8 hours apart
   -- feeding on schedule important
   -- should be fed before sleep time
   -- breed of pigeon affects hunger and food consumption
   -- snacks are for breeds of pigeon that require consume more
-
-  - initial feed schedule set up and info on breed of pigeon and consume amount
 
 - future considerations
   -- breed of pigeon affects when they go to sleep
