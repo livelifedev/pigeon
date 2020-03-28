@@ -32,6 +32,10 @@
         >
         </el-time-select>
       </el-form-item>
+
+      <el-form-item>
+        <el-button type="primary" size="small">Save</el-button>
+      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -81,5 +85,8 @@ export default {
 }
 .info-text {
   font-weight: bolder;
+}
+.el-form-item {
+  margin-bottom: 5px;
 }
 </style>
