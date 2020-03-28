@@ -34,7 +34,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" size="small">Save</el-button>
+        <el-button type="primary" size="small" @click="test">Save</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -55,13 +55,17 @@ export default {
   },
   created() {
     this.form = { ...this.form, ...this.createTimeSlots(this.appetite) };
-    console.log(moment());
+    console.log(moment().format('H'));
   },
   methods: {
     createTimeSlots(n) {
       const timeSlots = {};
       for (let i = 0; i < n; i++) timeSlots[`meal${i + 1}`] = null;
       return timeSlots;
+    },
+    test() {
+      console.log(this.form.meal1.substring(0, 2));
+      // form.meal1.substring(0,2)
     }
   }
 };

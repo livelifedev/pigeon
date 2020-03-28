@@ -20,7 +20,7 @@
 
 <script>
 import { PlaceholderUpcoming } from '..';
-import { TabTemplate, CareHealth, CareFeed } from './subcomponents';
+import { TabTemplate, CareHealth, CareFeed } from '..';
 
 export default {
   name: 'TabsCare',
