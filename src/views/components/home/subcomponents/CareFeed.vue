@@ -9,7 +9,7 @@
     <el-button class="action-button" type="success" size="small">
       FEED
     </el-button>
-    <h4>
+    <h4 class="feature-subtitle">
       Feeding schedule
       <el-button
         class="edit-button"
@@ -18,18 +18,21 @@
         size="small"
       ></el-button>
     </h4>
-    <el-time-select
-      v-for="meal in meals"
-      :key="meal"
-      v-model="time"
-      :picker-options="{
-        start: '00:00',
-        step: '01:00',
-        end: '23:00'
-      }"
-      placeholder="Select time"
-    >
-    </el-time-select>
+
+    <el-form ref="form" :model="form">
+      <el-form-item v-for="meal in appetite" :key="meal" :prop="`meal${meal}`">
+        <el-time-select
+          v-model="form[`meal${meal}`]"
+          :picker-options="{
+            start: '00:00',
+            step: '01:00',
+            end: '23:00'
+          }"
+          :placeholder="`meal ${meal}`"
+        >
+        </el-time-select>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
@@ -40,12 +43,22 @@ export default {
   name: 'CareFeed',
   data() {
     return {
-      time: '',
-      meals: ['1', '2', '3']
+      appetite: 3,
+
+      form: {},
+      time: null
     };
   },
   created() {
+    this.form = { ...this.form, ...this.createTimeSlots(this.appetite) };
     console.log(moment());
+  },
+  methods: {
+    createTimeSlots(n) {
+      const timeSlots = {};
+      for (let i = 0; i < n; i++) timeSlots[`meal${i + 1}`] = null;
+      return timeSlots;
+    }
   }
 };
 </script>
@@ -56,9 +69,12 @@ export default {
   font-size: 0.8rem;
   text-align: justify;
 }
+.feature-subtitle {
+  margin-bottom: 5px;
+}
 .action-button {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .edit-button {
   margin-left: 5px;
