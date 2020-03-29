@@ -2,15 +2,24 @@
   <div>
     <el-row class="row-health">
       <el-col :span="8">
-        <h5 class="col-health-title">HEALTH:</h5>
+        <h5 class="col-health-title">GROWTH:</h5>
       </el-col>
       <el-col :span="16">
         <el-progress
           :text-inside="true"
           :stroke-width="24"
           :percentage="80"
-          status="success"
+          :color="colors[pigeonDetails.element]"
         ></el-progress>
+      </el-col>
+    </el-row>
+
+    <el-row>
+      <el-col :span="8">
+        <h5 class="col-title">LIFE STAGE:</h5>
+      </el-col>
+      <el-col :span="16">
+        <h5 class="col-text">Hatchling</h5>
       </el-col>
     </el-row>
 
@@ -39,16 +48,18 @@ export default {
   name: 'FeatureHealth',
   data() {
     return {
+      pigeonDetails: JSON.parse(localStorage.getItem('squabDetails')),
+      colors: {
+        Air: '#B6D4EF',
+        Fire: '#DC2226',
+        Earth: '#969836',
+        Water: '#2DBBED'
+      },
+
       // TODO: Model out hunger statuses
       hunger: ['overstuffed', 'full', 'neutral', 'hungry', 'starving'],
-      // neutral - still state, hungry - feeding time, full - met daily appetite, overstuffed - fed more for current time, starving missed feed schedule
-      //
       appetite: 100, // determined fixed value
       dayIntake: 0 // should meet appetite daily
-      // Should I assign points or keep count of snacks and meals
-      // Each pigeon should have a consumption value based on breed
-      // Food can tally up to meet this value
-      // Reset day intake everyday, if end of day hungry keep hungry
     };
   }
 };

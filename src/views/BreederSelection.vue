@@ -4,19 +4,19 @@
       <el-col v-if="step !== CONFIRMATION" :span="24" :sm="{ span: 12 }">
         <FirstStep
           v-if="step === FIRSTSTEP"
-          @nextStep="setStep(SECONDSTEP)"
+          @nextStep="step = SECONDSTEP"
           @onNext="handleOnNext"
         />
         <SecondStep
           v-if="step === SECONDSTEP"
-          @prevStep="setStep(FIRSTSTEP)"
-          @nextStep="setStep(THIRDSTEP)"
+          @prevStep="step = FIRSTSTEP"
+          @nextStep="step = THIRDSTEP"
           @onNext="handleOnNext"
         />
         <ThirdStep
           v-if="step === THIRDSTEP"
-          @prevStep="setStep(SECONDSTEP)"
-          @nextStep="setStep(CONFIRMATION)"
+          @prevStep="step = SECONDSTEP"
+          @nextStep="step = CONFIRMATION"
           @onNext="handleOnNext"
         />
       </el-col>
@@ -64,9 +64,6 @@ export default {
   methods: {
     ...mapActions(['startSession']),
 
-    setStep(selectedStep) {
-      this.step = selectedStep;
-    },
     handleOnNext(details) {
       this.formDetails = { ...this.formDetails, ...details };
     },

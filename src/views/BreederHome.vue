@@ -20,19 +20,19 @@
         :sm="{ span: 8 }"
       >
         <div>
-          <el-button @click="setAction(CARE)">CARE</el-button>
+          <el-button @click="action = CARE">CARE</el-button>
         </div>
         <div>
-          <el-button @click="setAction(ADVENTURE)">ADVENTURE</el-button>
+          <el-button @click="action = ADVENTURE">ADVENTURE</el-button>
         </div>
         <div>
-          <el-button @click="setAction(SOCIALIZE)">SOCIALIZE</el-button>
+          <el-button @click="action = SOCIALIZE">SOCIALIZE</el-button>
         </div>
         <div>
-          <el-button @click="setAction(PROFILE)">PROFILE</el-button>
+          <el-button @click="action = PROFILE">PROFILE</el-button>
         </div>
         <div>
-          <el-button @click="handleOnPigeondex">PIGEONDEX</el-button>
+          <el-button @click="isPigeondex = true">PIGEONDEX</el-button>
         </div>
       </el-col>
 
@@ -43,7 +43,7 @@
           plain
           circle
           size="small"
-          @click="setAction(MENU)"
+          @click="action = MENU"
         ></el-button>
         <TabsCare v-if="action === CARE" />
         <TabsAdventure v-if="action === ADVENTURE" />
@@ -108,12 +108,6 @@ export default {
     getPigeonDetails() {
       // TODO: Change to get from Vuex store
       this.pigeonDetails = JSON.parse(localStorage.getItem('squabDetails'));
-    },
-    setAction(actionName) {
-      this.action = actionName;
-    },
-    handleOnPigeondex() {
-      this.isPigeondex = true;
     }
   }
 };
