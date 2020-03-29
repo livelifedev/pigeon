@@ -13,6 +13,7 @@
 
     <el-button
       class="action-button"
+      @click="handleOnFeed"
       type="success"
       size="small"
       :disabled="!feedingSchedule"
@@ -66,12 +67,30 @@
         >
       </el-form-item>
     </el-form>
+
+    <el-dialog
+      custom-class="confirm-dialog"
+      :title="`Feed ${currentPigeon.name}`"
+      :visible.sync="isConfirmOpen"
+      width="100%"
+      center
+    >
+      <span v-if="isFeedingTime">It's within the hour, time to go feed.</span>
+      <span v-else>
+        It's not yet feeding time, avoid feeding without reason.
+      </span>
+      <span slot="footer">
+        <el-button type="success" @click="isConfirmOpen = false">
+          Feed
+        </el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
-// import moment from 'moment';
+import moment from 'moment';
 
 export default {
   name: 'CareFeed',
@@ -80,7 +99,10 @@ export default {
       feedingSchedule: JSON.parse(localStorage.getItem('feedingSchedule')),
 
       canEdit: false,
-      form: {}
+      form: {},
+
+      isFeedingTime: false,
+      isConfirmOpen: false
     };
   },
   created() {
@@ -89,13 +111,10 @@ export default {
     } else {
       this.canEdit = true;
     }
-    // console.log(moment().format('H'));
   },
   computed: mapGetters(['currentPigeon']),
   methods: {
     handleOnSave() {
-      // console.log(this.form.meal1.substring(0, 2));
-      // form.meal1.substring(0,2)
       this.$refs.form.validate(valid => {
         if (valid) {
           localStorage.setItem('feedingSchedule', JSON.stringify(this.form));
@@ -122,6 +141,21 @@ export default {
       if (appetite === 3) return 'a large appetite';
       if (appetite === 2) return 'a normal appetite';
       return 'a small appetite';
+    },
+    checkCanFeed() {
+      const currentTime = moment().format('HH');
+      const feedTimes = Object.keys(this.feedingSchedule).map(e =>
+        this.feedingSchedule[e].substring(0, 2)
+      );
+      return feedTimes.includes(currentTime);
+    },
+    handleOnFeed() {
+      if (this.checkCanFeed()) {
+        this.isFeedingTime = true;
+      } else {
+        this.isFeedingTime = false;
+      }
+      this.isConfirmOpen = true;
     }
   }
 };
