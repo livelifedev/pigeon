@@ -2,8 +2,13 @@
   <div>
     <p class="feature-description">
       It is important to maintain a daily feeding schedule to nurture a healthy
-      growth. As a pigeon/bird, <span class="info-text">name</span> has a strong
-      appetite and requires <span class="info-text">3x feeding</span>.
+      growth.
+      <span class="info-text">
+        As a {{ `${currentPigeon.primary}/${currentPigeon.sub}` }},
+        {{ currentPigeon.name }} has
+        {{ genAppetiteLabel(currentPigeon.appetite) }} and requires
+        {{ currentPigeon.appetite }}x feeding.
+      </span>
     </p>
 
     <el-button
@@ -32,7 +37,7 @@
 
     <el-form ref="form" :model="form">
       <el-form-item
-        v-for="meal in appetite"
+        v-for="meal in currentPigeon.appetite"
         :key="meal"
         :prop="`meal${meal}`"
         :show-message="false"
@@ -65,14 +70,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 // import moment from 'moment';
 
 export default {
   name: 'CareFeed',
   data() {
     return {
-      appetite: 3,
-
       feedingSchedule: JSON.parse(localStorage.getItem('feedingSchedule')),
 
       canEdit: false,
@@ -87,6 +91,7 @@ export default {
     }
     // console.log(moment().format('H'));
   },
+  computed: mapGetters(['currentPigeon']),
   methods: {
     handleOnSave() {
       // console.log(this.form.meal1.substring(0, 2));
@@ -111,6 +116,12 @@ export default {
       const nextTime = this.form[`meal${meal + 1}`];
       if (nextTime) return this.form[`meal${meal + 1}`];
       return null;
+    },
+    genAppetiteLabel(appetite) {
+      if (appetite > 3) return 'an enormous appetite';
+      if (appetite === 3) return 'a large appetite';
+      if (appetite === 2) return 'a normal appetite';
+      return 'a small appetite';
     }
   }
 };

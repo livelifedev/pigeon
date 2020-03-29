@@ -9,7 +9,7 @@
           <el-row type="flex" justify="center">
             <el-col :span="24" :sm="{ span: 16 }" class="certificate-wrapper">
               <el-table :data="tableData" :show-header="false">
-                <el-table-column prop="key" width="80px"></el-table-column>
+                <el-table-column prop="key" width="77px"></el-table-column>
                 <el-table-column prop="value"></el-table-column>
               </el-table>
             </el-col>

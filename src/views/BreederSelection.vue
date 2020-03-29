@@ -21,7 +21,7 @@
         />
       </el-col>
 
-      <el-col v-else :span="24" :sm="{ span: 12 }">
+      <el-col v-else :span="24" :sm="{ span: 14 }">
         <ConfirmStep
           :formDetails="formDetails"
           @onReset="handleOnReset"
@@ -37,6 +37,7 @@ import { mapActions } from 'vuex';
 import moment from 'moment';
 import router from '../router';
 import { FirstStep, SecondStep, ThirdStep, ConfirmStep } from './components';
+import { calcAppetite } from '../utils/pigeonTools';
 
 export default {
   name: 'BreederSelection',
@@ -73,8 +74,13 @@ export default {
     },
     handleOnSubmit() {
       // TODO: Rewrite to post to backend
-      localStorage.setItem('squabDetails', JSON.stringify(this.formDetails));
-      this.startSession(this.formDetails);
+      const newDetails = {
+        ...this.formDetails,
+        appetite: calcAppetite(this.formDetails.sub)
+      };
+      localStorage.setItem('squabDetails', JSON.stringify(newDetails));
+      localStorage.removeItem('feedingSchedule');
+      this.startSession(newDetails);
       router.push('/breeder-home');
     }
   }
