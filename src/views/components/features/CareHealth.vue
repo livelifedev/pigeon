@@ -8,7 +8,7 @@
         <el-progress
           :text-inside="true"
           :stroke-width="24"
-          :percentage="80"
+          :percentage="5"
           :color="colors[pigeonDetails.element]"
         ></el-progress>
       </el-col>
@@ -38,6 +38,15 @@
       </el-col>
       <el-col :span="16">
         <h5 class="col-text">Chill</h5>
+      </el-col>
+    </el-row>
+
+    <el-row>
+      <el-col :span="8">
+        <h5 class="col-title">STATUS:</h5>
+      </el-col>
+      <el-col :span="16">
+        <h5 class="col-text">Healthy</h5>
       </el-col>
     </el-row>
   </div>
