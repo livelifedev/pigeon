@@ -1,7 +1,7 @@
 <template>
   <el-tabs v-model="activeName">
     <el-tab-pane label="Health" name="health">
-      <CareHealth />
+      <TabTemplate><CareHealth /></TabTemplate>
     </el-tab-pane>
     <el-tab-pane label="Feed" name="feed">
       <TabTemplate><CareFeed /></TabTemplate>

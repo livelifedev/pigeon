@@ -1,11 +1,10 @@
 <template>
   <div>
-    <el-row>
-      <el-col :span="5">
-        <h6 class="bar-title">HEALTH</h6>
+    <el-row class="row-health">
+      <el-col :span="8">
+        <h5 class="col-health-title">HEALTH:</h5>
       </el-col>
-
-      <el-col :span="19">
+      <el-col :span="16">
         <el-progress
           :text-inside="true"
           :stroke-width="24"
@@ -16,17 +15,20 @@
     </el-row>
 
     <el-row>
-      <el-col :span="5">
-        <h6 class="bar-title">HUNGER</h6>
+      <el-col :span="8">
+        <h5 class="col-title">HUNGER:</h5>
       </el-col>
+      <el-col :span="16">
+        <h5 class="col-text">Neutral</h5>
+      </el-col>
+    </el-row>
 
-      <el-col :span="19">
-        <el-progress
-          :text-inside="true"
-          :stroke-width="24"
-          :percentage="100"
-          status="warning"
-        ></el-progress>
+    <el-row>
+      <el-col :span="8">
+        <h5 class="col-title">MOOD:</h5>
+      </el-col>
+      <el-col :span="16">
+        <h5 class="col-text">Chill</h5>
       </el-col>
     </el-row>
   </div>
@@ -53,11 +55,24 @@ export default {
 </script>
 
 <style scoped>
-.bar-title {
-  margin: 6px 6px 0 0;
-  text-align: center;
+.el-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.row-health {
+  display: block;
+  margin-bottom: 15px;
 }
 .el-progress {
   max-width: 300px;
+}
+.col-health-title {
+  margin: 6px 0 0;
+}
+.col-title,
+.col-text {
+  margin: 0;
+  font-size: 0.7rem;
 }
 </style>
