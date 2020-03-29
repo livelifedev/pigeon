@@ -2,13 +2,13 @@
   <div class="home-container">
     <el-row>
       <el-col class="graphics-window">
-        <h4 class="pigeon-name">{{ pigeonDetails.name }}</h4>
+        <h4 class="pigeon-name">{{ currentPigeon.name }}</h4>
         <img
           :src="`./assets/squab-${avatarElement}.svg`"
           alt="Pigeon avatar"
           class="pigeon-avatar"
         />
-        <h4 class="pigeon-age">Age: {{ calcAge }} days</h4>
+        <h4 class="pigeon-age">Age: {{ pigeonAge }} days</h4>
       </el-col>
     </el-row>
 
@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import moment from 'moment';
+import { mapGetters } from 'vuex';
 import {
   TabsCare,
   TabsAdventure,
@@ -85,31 +85,15 @@ export default {
       SOCIALIZE: 'SOCIALIZE',
       PROFILE: 'PROFILE',
 
-      pigeonDetails: null,
-
       action: null,
 
-      isPigeondex: false,
-
-      avatarElement: null
+      isPigeondex: false
     };
   },
   created() {
-    this.getPigeonDetails();
-    this.avatarElement = this.pigeonDetails.element.toLowerCase();
     this.action = this.MENU;
   },
-  computed: {
-    calcAge() {
-      return moment().diff(moment.unix(this.pigeonDetails.dob), 'days');
-    }
-  },
-  methods: {
-    getPigeonDetails() {
-      // TODO: Change to get from Vuex store
-      this.pigeonDetails = JSON.parse(localStorage.getItem('squabDetails'));
-    }
-  }
+  computed: mapGetters(['currentPigeon', 'avatarElement', 'pigeonAge'])
 };
 </script>
 

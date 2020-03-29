@@ -1,9 +1,14 @@
+import moment from 'moment';
+
 const state = {
   pigeon: JSON.parse(localStorage.getItem('squabDetails'))
 };
 
 const getters = {
-  isActiveBreeder: state => !!state.pigeon
+  isActiveBreeder: state => !!state.pigeon,
+  currentPigeon: state => state.pigeon,
+  avatarElement: state => state.pigeon.element.toLowerCase(),
+  pigeonAge: state => moment().diff(moment.unix(state.pigeon.dob), 'days')
 };
 
 const actions = {

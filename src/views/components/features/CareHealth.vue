@@ -9,7 +9,7 @@
           :text-inside="true"
           :stroke-width="24"
           :percentage="5"
-          :color="colors[pigeonDetails.element]"
+          :color="colors[currentPigeon.element]"
         ></el-progress>
       </el-col>
     </el-row>
@@ -53,11 +53,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'FeatureHealth',
   data() {
     return {
-      pigeonDetails: JSON.parse(localStorage.getItem('squabDetails')),
       colors: {
         Air: '#B6D4EF',
         Fire: '#DC2226',
@@ -70,7 +71,8 @@ export default {
       appetite: 100, // determined fixed value
       dayIntake: 0 // should meet appetite daily
     };
-  }
+  },
+  computed: mapGetters(['currentPigeon'])
 };
 </script>
 

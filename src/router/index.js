@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 // Containers
-import AppFull from '../containers/AppFull'
+import AppFull from '../containers/AppFull';
 
 // Views
 import AppLanding from '../views/AppLanding';
@@ -30,7 +30,6 @@ export default new VueRouter({
           path: 'breeder-home',
           component: BreederHome,
           beforeEnter: (to, from, next) => {
-            // TODO: Change to get from Vuex store
             if (localStorage.getItem('squabDetails')) {
               next();
             } else {

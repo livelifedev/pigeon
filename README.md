@@ -11,6 +11,8 @@ Deployed: http://guild-of-pigeon-breeders.s3-website-ap-southeast-2.amazonaws.co
 
 ## Mechanics
 
+- \*\*Change - instead of focusing on health/hp, focus on 'growth', experience/evolution points
+
 - Health - has health and hunger level - when hunger below threshold, auto deplete health
   -- overfeeding will also deplete health
   -- hunger is kept track using time of last fed and amount given

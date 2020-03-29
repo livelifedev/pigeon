@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import moment from 'moment';
+// import moment from 'moment';
 
 export default {
   name: 'CareFeed',
@@ -85,7 +85,7 @@ export default {
     } else {
       this.canEdit = true;
     }
-    console.log(moment().format('H'));
+    // console.log(moment().format('H'));
   },
   methods: {
     handleOnSave() {
