@@ -96,7 +96,7 @@ export default {
   name: 'CareFeed',
   data() {
     return {
-      feedingSchedule: JSON.parse(localStorage.getItem('feedingSchedule')),
+      feedingSchedule: JSON.parse(sessionStorage.getItem('feedingSchedule')),
 
       canEdit: false,
       form: {},
@@ -117,7 +117,7 @@ export default {
     handleOnSave() {
       this.$refs.form.validate(valid => {
         if (valid) {
-          localStorage.setItem('feedingSchedule', JSON.stringify(this.form));
+          sessionStorage.setItem('feedingSchedule', JSON.stringify(this.form));
           this.feedingSchedule = this.form;
           this.canEdit = false;
         }

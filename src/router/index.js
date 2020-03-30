@@ -30,7 +30,7 @@ export default new VueRouter({
           path: 'breeder-home',
           component: BreederHome,
           beforeEnter: (to, from, next) => {
-            if (localStorage.getItem('squabDetails')) {
+            if (sessionStorage.getItem('squabDetails')) {
               next();
             } else {
               next('/');

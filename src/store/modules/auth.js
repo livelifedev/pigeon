@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 const state = {
-  pigeon: JSON.parse(localStorage.getItem('squabDetails'))
+  pigeon: JSON.parse(sessionStorage.getItem('squabDetails'))
 };
 
 const getters = {

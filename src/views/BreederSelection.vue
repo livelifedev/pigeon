@@ -78,8 +78,8 @@ export default {
         ...this.formDetails,
         appetite: calcAppetite(this.formDetails.sub)
       };
-      localStorage.setItem('squabDetails', JSON.stringify(newDetails));
-      localStorage.removeItem('feedingSchedule');
+      sessionStorage.setItem('squabDetails', JSON.stringify(newDetails));
+      sessionStorage.removeItem('feedingSchedule');
       this.startSession(newDetails);
       router.push('/breeder-home');
     }
