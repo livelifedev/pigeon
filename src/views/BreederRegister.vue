@@ -55,7 +55,6 @@
 
 <script>
 import { mapActions } from 'vuex';
-import { graphql } from './../utils/graphql';
 import router from '../router';
 
 export default {
