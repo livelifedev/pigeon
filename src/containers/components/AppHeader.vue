@@ -8,8 +8,8 @@
         @click="handleOnHome"
       ></el-button>
     </div>
-    <el-card :body-style="{ padding: '0px' }">
-      <h4 v-if="isActiveBreeder" class="rank-text">Novice Breeder</h4>
+    <el-card v-if="isActiveBreeder" :body-style="{ padding: '0px' }">
+      <h4 class="rank-text">Novice Breeder</h4>
     </el-card>
     <div v-if="isActiveBreeder">
       <el-button

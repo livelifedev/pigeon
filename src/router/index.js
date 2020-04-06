@@ -6,6 +6,7 @@ import AppFull from '../containers/AppFull';
 
 // Views
 import AppLanding from '../views/AppLanding';
+import BreederRegister from '../views/BreederRegister';
 import BreederSelection from '../views/BreederSelection';
 import BreederHome from '../views/BreederHome';
 
@@ -21,6 +22,10 @@ export default new VueRouter({
         {
           path: 'landing',
           component: AppLanding
+        },
+        {
+          path: 'breeder-register',
+          component: BreederRegister
         },
         {
           path: 'breeder-selection',

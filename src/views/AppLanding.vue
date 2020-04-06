@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { graphql } from '../utils/graphql';
+// import { graphql } from '../utils/graphql';
 import router from '../router';
 import { GuildIntro } from './components';
 
@@ -45,7 +45,7 @@ export default {
       this.isIntro = true;
     },
     handleOnGo() {
-      router.push('/breeder-selection');
+      router.push('/breeder-register');
     }
   }
 };
