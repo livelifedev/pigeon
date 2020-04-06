@@ -1,7 +1,7 @@
 <template>
   <div class="landing-container">
     <div v-if="!isIntro">
-      <img alt="Guild logo" src="../assets/logo.svg" class="logo"/>
+      <img alt="Guild logo" src="../assets/logo.svg" class="logo" />
       <h1>Welcome to the Guild of Pigeon Breeders.</h1>
       <el-button type="success" @click="handleOnEnter">Enter</el-button>
     </div>
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { graphql } from '../utils/graphql';
 import router from '../router';
 import { GuildIntro } from './components';
 
@@ -28,6 +29,17 @@ export default {
       isIntro: false
     };
   },
+  // created() {
+  //   const start = async () => {
+  //     const token = await graphql(`
+  //       mutation {
+  //         login(email: "admin@admin.com", password: "password")
+  //       }
+  //     `);
+  //     console.log(token);
+  //   };
+  //   start();
+  // },
   methods: {
     handleOnEnter() {
       this.isIntro = true;
