@@ -55,6 +55,7 @@
 
 <script>
 import { mapActions } from 'vuex';
+import { graphql } from './../utils/graphql';
 import router from '../router';
 
 export default {
@@ -67,6 +68,7 @@ export default {
         callback();
       }
     };
+
     return {
       form: {
         breederName: '',
@@ -77,20 +79,24 @@ export default {
 
       rules: {
         breederName: [{ required: true }],
-        email: [{ type: 'email', required: true }],
+        email: [{ required: true }, { type: 'email', trigger: ['blur'] }],
         password: [{ required: true }],
         confirmPassword: [{ validator: validatePass }]
       }
     };
   },
-  created() {},
   methods: {
-    ...mapActions(['startSession']),
+    ...mapActions(['registerUser']),
 
     handleOnRegister() {
-      this.$refs.form.validate(valid => {
+      this.$refs.form.validate(async valid => {
         if (valid) {
-          router.push('/breeder-selection');
+          try {
+            await this.registerUser(this.form);
+            router.push('/breeder-selection');
+          } catch (error) {
+            console.log(error);
+          }
         }
       });
     }

@@ -15,7 +15,6 @@
 </template>
 
 <script>
-// import { graphql } from '../utils/graphql';
 import router from '../router';
 import { GuildIntro } from './components';
 
@@ -29,17 +28,6 @@ export default {
       isIntro: false
     };
   },
-  // created() {
-  //   const start = async () => {
-  //     const token = await graphql(`
-  //       mutation {
-  //         login(email: "admin@admin.com", password: "password")
-  //       }
-  //     `);
-  //     console.log(token);
-  //   };
-  //   start();
-  // },
   methods: {
     handleOnEnter() {
       this.isIntro = true;
