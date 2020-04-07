@@ -1,13 +1,14 @@
 import moment from 'moment';
-import { userRegister } from '../../utils/api';
+import { userRegister, userCurrent } from '../../utils/api';
 
 const state = {
   auth: localStorage.getItem('token'),
+  currentUser: null,
   pigeon: JSON.parse(sessionStorage.getItem('squabDetails'))
 };
 
 const getters = {
-  isLoggedIn: state => !!state.auth,
+  isLoggedIn: state => !!state.currentUser,
   isActiveBreeder: state => !!state.pigeon,
   currentPigeon: state => state.pigeon,
   avatarElement: state => state.pigeon.element.toLowerCase(),
@@ -22,12 +23,19 @@ const actions = {
     const { data } = await userRegister(formDetails);
     localStorage.setItem('token', data.token);
     commit('setAuth', data.token);
+  },
+  getCurrentUser: async ({ commit }) => {
+    const { data } = await userCurrent();
+    commit('setCurrentUser', data.profile);
   }
 };
 
 const mutations = {
   setAuth: (state, token) => {
     state.auth = token;
+  },
+  setCurrentUser: (state, profile) => {
+    state.currentUser = profile;
   },
   setPigeon: (state, pigeon) => {
     state.pigeon = pigeon;

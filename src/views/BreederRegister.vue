@@ -90,7 +90,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['registerUser']),
+    ...mapActions(['registerUser', 'getCurrentUser']),
 
     handleOnRegister() {
       this.$refs.form.validate(async valid => {
@@ -98,6 +98,7 @@ export default {
           try {
             this.isSubmitting = true;
             await this.registerUser(this.form);
+            await this.getCurrentUser();
 
             router.push('/breeder-selection');
           } catch (error) {

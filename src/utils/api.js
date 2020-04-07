@@ -18,3 +18,19 @@ export const userRegister = ({ breederName, email, password }) => {
     variables
   );
 };
+
+// Fetch current logged in user profile
+export const userCurrent = () => {
+  return graphql(
+    `
+      query {
+        profile {
+          id
+          breederName
+          rank
+          email
+        }
+      }
+    `
+  );
+};
