@@ -9,7 +9,7 @@ const state = {
 
 const getters = {
   isLoggedIn: state => !!state.currentUser,
-  breederRank: state => state.currentUser.rank,
+  currentUser: state => state.currentUser,
   currentPigeon: state => state.pigeon,
   avatarElement: state => state.pigeon.element.toLowerCase(),
   pigeonAge: state => moment().diff(moment.unix(state.pigeon.dob), 'days')

@@ -5,10 +5,12 @@
         <h3>Breeder Profile</h3>
         <i class="el-icon-user-solid"></i>
 
-        <el-table :data="tableData" :show-header="false">
-          <el-table-column prop="key" width="120px"></el-table-column>
-          <el-table-column prop="value"></el-table-column>
-        </el-table>
+        <div class="details-wrapper">
+          <el-table :data="tableData" :show-header="false">
+            <el-table-column prop="key" width="120px"></el-table-column>
+            <el-table-column prop="value"></el-table-column>
+          </el-table>
+        </div>
       </el-col>
     </el-row>
 
@@ -17,36 +19,41 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import router from '../router';
 
 export default {
   name: 'BreederProfile',
-  data() {
-    return {
-      tableData: [
-        {
-          key: 'Guild ID:',
-          value: ''
-        },
-        {
-          key: 'Breeder Name:',
-          value: ''
-        },
-        {
-          key: 'Rank:',
-          value: ''
-        },
-        {
-          key: 'Email:',
-          value: ''
-        },
-        {
-          key: 'Pigeons Bred:',
-          value: ''
-        }
-      ]
-    };
+  computed: {
+    ...mapGetters(['currentUser']),
+
+    tableData() {
+      if (this.currentUser) {
+        return [
+          {
+            key: 'Guild ID:',
+            value: `#${this.currentUser.id}`
+          },
+          {
+            key: 'Breeder Name:',
+            value: this.currentUser.breederName
+          },
+          {
+            key: 'Rank:',
+            value: this.currentUser.rank
+          },
+          {
+            key: 'Email:',
+            value: this.currentUser.email
+          },
+          {
+            key: 'Pigeons Bred:',
+            value: ''
+          }
+        ];
+      }
+      return null;
+    }
   },
   methods: {
     ...mapActions(['registerUser', 'getCurrentUser']),
@@ -83,10 +90,15 @@ export default {
 }
 .el-icon-user-solid {
   font-size: 8rem;
-  border: #00000050 1px solid;
+  color: darkgray;
+  border: lightgray 1px solid;
   border-radius: 100%;
   overflow: hidden;
   padding: 15px;
+}
+.details-wrapper {
+  max-width: 400px;
+  margin: auto;
 }
 .el-button {
   margin-top: 20px;
