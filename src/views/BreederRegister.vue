@@ -1,10 +1,12 @@
 <template>
   <div class="selection-container">
-    <h2>Join the ranks!</h2>
-    <h4 class="text-note">Become an official Pigeon Breeder.</h4>
-
     <el-row type="flex" justify="center">
       <el-col :span="24" :sm="{ span: 12 }">
+        <h2>Join the ranks!</h2>
+        <h4 class="text-note">
+          Become an official pigeon breeder of the guild.
+        </h4>
+
         <el-form
           ref="form"
           :model="form"
@@ -14,10 +16,7 @@
           hide-required-asterisk
         >
           <el-form-item label="Breeder Name:" prop="breederName">
-            <el-input
-              v-model="form.breederName"
-              placeholder="username"
-            ></el-input>
+            <el-input v-model="form.breederName" placeholder="name"></el-input>
           </el-form-item>
 
           <el-form-item label="Email:" prop="email">
@@ -42,7 +41,11 @@
 
           <el-form-item class="button-group" label-width="0">
             <el-button-group>
-              <el-button type="primary" @click="handleOnRegister">
+              <el-button
+                type="primary"
+                :loading="isSubmitting"
+                @click="handleOnRegister"
+              >
                 Register
               </el-button>
             </el-button-group>
@@ -76,6 +79,8 @@ export default {
         confirmPassword: ''
       },
 
+      isSubmitting: false,
+
       rules: {
         breederName: [{ required: true }],
         email: [{ required: true }, { type: 'email', trigger: ['blur'] }],
@@ -91,10 +96,12 @@ export default {
       this.$refs.form.validate(async valid => {
         if (valid) {
           try {
+            this.isSubmitting = true;
             await this.registerUser(this.form);
             router.push('/breeder-selection');
           } catch (error) {
             console.log(error);
+            this.isSubmitting = false;
           }
         }
       });
