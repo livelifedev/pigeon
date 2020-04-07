@@ -14,12 +14,12 @@
       </el-col>
     </el-row>
 
-    <el-button @click="logout">Logout</el-button>
+    <el-button type="success" @click="logout">Logout</el-button>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import router from '../router';
 
 export default {
@@ -56,8 +56,10 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['logoutUser']),
+
     logout() {
-      localStorage.removeItem('token');
+      this.logoutUser();
       router.push('/');
     }
   }

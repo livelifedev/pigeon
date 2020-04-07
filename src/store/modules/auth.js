@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { userRegister, userCurrent } from '../../utils/api';
+import { userLogin, userRegister, userCurrent } from '../../utils/api';
 
 const state = {
   token: localStorage.getItem('token'),
@@ -18,6 +18,16 @@ const getters = {
 const actions = {
   startSession: ({ commit }, pigeon) => {
     commit('setPigeon', pigeon);
+  },
+  loginUser: async ({ commit }, { email, password }) => {
+    const { data } = await userLogin(email, password);
+    localStorage.setItem('token', data.token);
+    commit('setAuth', data.token);
+  },
+  logoutUser: ({ commit }) => {
+    localStorage.removeItem('token');
+    commit('setAuth', null);
+    commit('setCurrentUser', null);
   },
   registerUser: async ({ commit }, formDetails) => {
     const { data } = await userRegister(formDetails);

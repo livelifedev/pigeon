@@ -48,7 +48,7 @@
           <el-form-item class="button-group" label-width="0">
             <el-button-group>
               <el-button
-                type="primary"
+                type="success"
                 :loading="isSubmitting"
                 @click="handleOnRegister"
               >

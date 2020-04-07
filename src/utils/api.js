@@ -1,5 +1,15 @@
 import { graphql } from './graphql';
 
+export const userLogin = (email, password) => {
+  return graphql(
+    `
+      mutation userLogin {
+        token: login(email: "${email}", password: "${password}")
+      }
+    `
+  );
+};
+
 export const userRegister = ({ breederName, email, password }) => {
   const variables = {
     user: {
@@ -23,7 +33,7 @@ export const userRegister = ({ breederName, email, password }) => {
 export const userCurrent = () => {
   return graphql(
     `
-      query {
+      query userCurrent {
         profile {
           id
           breederName
