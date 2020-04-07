@@ -98,10 +98,17 @@ export default {
           try {
             this.isSubmitting = true;
             await this.registerUser(this.form);
+
             router.push('/breeder-selection');
           } catch (error) {
-            console.log(error);
+            console.error(error);
             this.isSubmitting = false;
+
+            this.$message({
+              message: 'Unable to complete registration.',
+              type: 'error',
+              center: true
+            });
           }
         }
       });

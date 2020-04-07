@@ -20,6 +20,7 @@ const actions = {
   },
   registerUser: async ({ commit }, formDetails) => {
     const { data } = await userRegister(formDetails);
+    localStorage.setItem('token', data.token);
     commit('setAuth', data.token);
   }
 };

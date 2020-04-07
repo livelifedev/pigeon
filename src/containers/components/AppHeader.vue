@@ -8,10 +8,10 @@
         @click="handleOnHome"
       ></el-button>
     </div>
-    <el-card v-if="isActiveBreeder" :body-style="{ padding: '0px' }">
+    <el-card v-if="isLoggedIn" :body-style="{ padding: '0px' }">
       <h4 class="rank-text">Novice Breeder</h4>
     </el-card>
-    <div v-if="isActiveBreeder">
+    <div v-if="isLoggedIn">
       <el-button
         icon="el-icon-user-solid"
         plain
@@ -28,7 +28,7 @@ import router from '../../router';
 
 export default {
   name: 'AppHeader',
-  computed: mapGetters(['isActiveBreeder']),
+  computed: mapGetters(['isLoggedIn']),
   methods: {
     handleOnHome() {
       router.push('/').catch(err => err);

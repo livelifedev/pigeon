@@ -17,7 +17,8 @@ import {
   TabPane,
   Dialog,
   Progress,
-  TimeSelect
+  TimeSelect,
+  Message
 } from 'element-ui';
 import lang from 'element-ui/lib/locale/lang/en';
 import locale from 'element-ui/lib/locale';
@@ -42,3 +43,5 @@ Vue.use(TabPane);
 Vue.use(Dialog);
 Vue.use(Progress);
 Vue.use(TimeSelect);
+
+Vue.prototype.$message = Message;
