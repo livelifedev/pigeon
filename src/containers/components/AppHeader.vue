@@ -34,7 +34,7 @@ export default {
       router.push('/').catch(err => err);
     },
     handleOnUser() {
-      router.push('/breeder-home').catch(err => err);
+      router.push('/breeder-profile').catch(err => err);
     }
   }
 };

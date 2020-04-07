@@ -48,7 +48,7 @@ export default {
           },
           {
             key: 'Pigeons Bred:',
-            value: ''
+            value: this.currentUser.pigeons.length
           }
         ];
       }
@@ -99,8 +99,9 @@ export default {
 .details-wrapper {
   max-width: 400px;
   margin: auto;
+  margin-top: 5px;
 }
 .el-button {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 </style>

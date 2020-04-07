@@ -29,6 +29,9 @@ export const userCurrent = () => {
           breederName
           rank
           email
+          pigeons {
+            id
+          }
         }
       }
     `
