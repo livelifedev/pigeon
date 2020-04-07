@@ -3,17 +3,27 @@
     <h2>Please register your squab's details.</h2>
     <h4 class="text-note">Note: A squab is a baby pigeon.</h4>
 
-    <el-form ref="form" :model="form" label-width="100px" label-position="left" :rules="rules" hide-required-asterisk>
+    <el-form
+      ref="firstForm"
+      :model="firstForm"
+      label-width="100px"
+      label-position="left"
+      :rules="rules"
+      hide-required-asterisk
+    >
       <el-form-item label="Name:" prop="name">
-        <el-input v-model="form.name" placeholder="given name"></el-input>
+        <el-input v-model="firstForm.name" placeholder="given name"></el-input>
       </el-form-item>
 
       <el-form-item label="Flock:" prop="flock">
-        <el-input v-model="form.flock" placeholder="name of pigeon flock"></el-input>
+        <el-input
+          v-model="firstForm.flock"
+          placeholder="name of pigeon flock"
+        ></el-input>
       </el-form-item>
 
       <el-form-item label="Gender:" prop="gender">
-        <el-select v-model="form.gender" placeholder="select a gender">
+        <el-select v-model="firstForm.gender" placeholder="select a gender">
           <el-option
             v-for="gender in genders"
             :key="gender.value"
@@ -26,7 +36,7 @@
       </el-form-item>
 
       <el-form-item label="Region:" prop="region">
-        <el-select v-model="form.region" placeholder="select a region">
+        <el-select v-model="firstForm.region" placeholder="select a region">
           <el-option
             v-for="region in regions"
             :key="region.value"
@@ -50,7 +60,7 @@ export default {
   name: 'FirstStep',
   data() {
     return {
-      form: {
+      firstForm: {
         name: '',
         flock: '',
         gender: '',
@@ -75,19 +85,19 @@ export default {
       ],
 
       rules: {
-        name: [{required: true}],
-        flock: [{required: true}],
-        gender: [{required: true}],
-        region: [{required: true}]
+        name: [{ required: true }],
+        flock: [{ required: true }],
+        gender: [{ required: true }],
+        region: [{ required: true }]
       }
     };
   },
   methods: {
     goNext() {
-      this.$refs.form.validate((valid) => { 
+      this.$refs.firstForm.validate(valid => {
         if (valid) {
           this.$emit('nextStep');
-          this.$emit('onNext', this.form);
+          this.$emit('onNext', this.firstForm);
         }
       });
     }

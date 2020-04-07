@@ -1,11 +1,21 @@
 <template>
   <div class="third-step-container">
     <h2>What is your squab's elemental line?</h2>
-    <h4 class="text-note">Note: Dormant within pigeons are a hidden power, this can be trained and manifested.</h4>
+    <h4 class="text-note">
+      Note: Dormant within pigeons are a hidden power, this can be trained and
+      manifested.
+    </h4>
 
-    <el-form ref="form" :model="form" label-width="100px" label-position="left" :rules="rules" hide-required-asterisk>
+    <el-form
+      ref="thirdForm"
+      :model="thirdForm"
+      label-width="100px"
+      label-position="left"
+      :rules="rules"
+      hide-required-asterisk
+    >
       <el-form-item label="Element:" prop="element">
-        <el-select v-model="form.element" placeholder="select an element">
+        <el-select v-model="thirdForm.element" placeholder="select an element">
           <el-option
             v-for="el in elements"
             :key="el.value"
@@ -32,7 +42,7 @@ export default {
   name: 'ThirdStep',
   data() {
     return {
-      form: {
+      thirdForm: {
         element: 'Air'
       },
 
@@ -45,16 +55,16 @@ export default {
       ],
 
       rules: {
-        element: [{required: true}],
+        element: [{ required: true }]
       }
     };
   },
   methods: {
     goNext() {
-      this.$refs.form.validate((valid) => { 
+      this.$refs.thirdForm.validate(valid => {
         if (valid) {
           this.$emit('nextStep');
-          this.$emit('onNext', this.form);
+          this.$emit('onNext', this.thirdForm);
         }
       });
     },

@@ -1,11 +1,25 @@
 <template>
   <div class="second-step-container">
     <h2>Is your squab a half-breed?</h2>
-    <h4 class="text-note">Note: Certain flocks of pigeon contain mutations in their DNA, inhereting traits of another animal group.</h4>
+    <h4 class="text-note">
+      Note: Certain flocks of pigeon contain mutations in their DNA, inhereting
+      traits of another animal group.
+    </h4>
 
-    <el-form ref="form" :model="form" label-width="100px" label-position="left" :rules="rules" hide-required-asterisk>
+    <el-form
+      ref="secondForm"
+      :model="secondForm"
+      label-width="100px"
+      label-position="left"
+      :rules="rules"
+      hide-required-asterisk
+    >
       <el-form-item label="Primary:" prop="primary">
-        <el-select v-model="form.primary" disabled placeholder="primary breed">
+        <el-select
+          v-model="secondForm.primary"
+          disabled
+          placeholder="primary breed"
+        >
           <el-option
             v-for="breed in primaryBreeds"
             :key="breed.value"
@@ -17,7 +31,7 @@
       </el-form-item>
 
       <el-form-item label="Sub-breed:" prop="sub">
-        <el-select v-model="form.sub" placeholder="secondary breed">
+        <el-select v-model="secondForm.sub" placeholder="secondary breed">
           <el-option
             v-for="breed in subBreeds"
             :key="breed.value"
@@ -44,7 +58,7 @@ export default {
   name: 'SecondStep',
   data() {
     return {
-      form: {
+      secondForm: {
         primary: 'Pigeon',
         sub: 'Bird'
       },
@@ -63,17 +77,17 @@ export default {
       ],
 
       rules: {
-        primary: [{required: true}],
-        sub: [{required: true}],
+        primary: [{ required: true }],
+        sub: [{ required: true }]
       }
     };
   },
   methods: {
     goNext() {
-      this.$refs.form.validate((valid) => { 
+      this.$refs.secondForm.validate(valid => {
         if (valid) {
           this.$emit('nextStep');
-          this.$emit('onNext', this.form);
+          this.$emit('onNext', this.secondForm);
         }
       });
     },

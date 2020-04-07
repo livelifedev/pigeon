@@ -8,25 +8,31 @@
         </h4>
 
         <el-form
-          ref="form"
-          :model="form"
+          ref="registerForm"
+          :model="registerForm"
           label-width="110px"
           label-position="left"
           :rules="rules"
           hide-required-asterisk
         >
           <el-form-item label="Breeder Name:" prop="breederName">
-            <el-input v-model="form.breederName" placeholder="name"></el-input>
+            <el-input
+              v-model="registerForm.breederName"
+              placeholder="name"
+            ></el-input>
           </el-form-item>
 
           <el-form-item label="Email:" prop="email">
-            <el-input v-model="form.email" placeholder="email"></el-input>
+            <el-input
+              v-model="registerForm.email"
+              placeholder="email"
+            ></el-input>
           </el-form-item>
 
           <el-form-item label="Password:" prop="password">
             <el-input
               type="password"
-              v-model="form.password"
+              v-model="registerForm.password"
               placeholder="password"
             ></el-input>
           </el-form-item>
@@ -34,7 +40,7 @@
           <el-form-item label="Confirm:" prop="confirmPassword">
             <el-input
               type="password"
-              v-model="form.confirmPassword"
+              v-model="registerForm.confirmPassword"
               placeholder="confirm password"
             ></el-input>
           </el-form-item>
@@ -64,7 +70,7 @@ export default {
   name: 'BreederSelection',
   data() {
     const validatePass = (rule, value, callback) => {
-      if (value !== this.form.password) {
+      if (value !== this.registerForm.password) {
         callback(new Error("passwords don't match!"));
       } else {
         callback();
@@ -72,7 +78,7 @@ export default {
     };
 
     return {
-      form: {
+      registerForm: {
         breederName: '',
         email: '',
         password: '',
@@ -93,11 +99,11 @@ export default {
     ...mapActions(['registerUser', 'getCurrentUser']),
 
     handleOnRegister() {
-      this.$refs.form.validate(async valid => {
+      this.$refs.registerForm.validate(async valid => {
         if (valid) {
           try {
             this.isSubmitting = true;
-            await this.registerUser(this.form);
+            await this.registerUser(this.registerForm);
             await this.getCurrentUser();
 
             router.push('/breeder-selection');

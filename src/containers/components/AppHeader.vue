@@ -11,12 +11,12 @@
     <el-card v-if="isLoggedIn" :body-style="{ padding: '0px' }">
       <h4 class="rank-text">{{ currentUser.rank }}</h4>
     </el-card>
-    <div v-if="isLoggedIn">
+    <div>
       <el-button
         icon="el-icon-user-solid"
         plain
         circle
-        @click="handleOnUser"
+        @click="handleOnUser(!isLoggedIn)"
       ></el-button>
     </div>
   </div>
@@ -33,8 +33,12 @@ export default {
     handleOnHome() {
       router.push('/').catch(err => err);
     },
-    handleOnUser() {
-      router.push('/breeder-profile').catch(err => err);
+    handleOnUser(login) {
+      if (login) {
+        router.push('/login').catch(err => err);
+      } else {
+        router.push('/breeder-profile').catch(err => err);
+      }
     }
   }
 };

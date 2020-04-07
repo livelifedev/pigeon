@@ -36,7 +36,7 @@
       Please create a feeding schedule.
     </p>
 
-    <el-form ref="form" :model="form">
+    <el-form ref="feedForm" :model="feedForm">
       <el-form-item
         v-for="meal in currentPigeon.appetite"
         :key="meal"
@@ -45,7 +45,7 @@
         required
       >
         <el-time-select
-          v-model="form[`meal${meal}`]"
+          v-model="feedForm[`meal${meal}`]"
           :picker-options="{
             start: '01:00',
             step: '01:00',
@@ -99,7 +99,7 @@ export default {
       feedingSchedule: JSON.parse(sessionStorage.getItem('feedingSchedule')),
 
       canEdit: false,
-      form: {},
+      feedForm: {},
 
       isFeedingTime: false,
       isConfirmOpen: false
@@ -107,7 +107,7 @@ export default {
   },
   created() {
     if (this.feedingSchedule) {
-      this.form = this.feedingSchedule;
+      this.feedForm = this.feedingSchedule;
     } else {
       this.canEdit = true;
     }
@@ -115,25 +115,28 @@ export default {
   computed: mapGetters(['currentPigeon']),
   methods: {
     handleOnSave() {
-      this.$refs.form.validate(valid => {
+      this.$refs.feedForm.validate(valid => {
         if (valid) {
-          sessionStorage.setItem('feedingSchedule', JSON.stringify(this.form));
-          this.feedingSchedule = this.form;
+          sessionStorage.setItem(
+            'feedingSchedule',
+            JSON.stringify(this.feedForm)
+          );
+          this.feedingSchedule = this.feedForm;
           this.canEdit = false;
         }
       });
     },
     disableTimeSelect(meal) {
-      if (meal > 1) return !this.form[`meal${meal - 1}`];
+      if (meal > 1) return !this.feedForm[`meal${meal - 1}`];
       return false;
     },
     checkMinTime(meal) {
-      if (meal > 1) return this.form[`meal${meal - 1}`];
+      if (meal > 1) return this.feedForm[`meal${meal - 1}`];
       return '00:00';
     },
     checkMaxTime(meal) {
-      const nextTime = this.form[`meal${meal + 1}`];
-      if (nextTime) return this.form[`meal${meal + 1}`];
+      const nextTime = this.feedForm[`meal${meal + 1}`];
+      if (nextTime) return this.feedForm[`meal${meal + 1}`];
       return null;
     },
     genAppetiteLabel(appetite) {
