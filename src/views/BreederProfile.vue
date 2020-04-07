@@ -2,18 +2,17 @@
   <div class="profile-container">
     <el-row type="flex" justify="center">
       <el-col :span="24" :sm="{ span: 12 }">
-        <div class="profile-image">
-          <i class="el-icon-user-solid"></i>
-        </div>
+        <h3>Breeder Profile</h3>
+        <i class="el-icon-user-solid"></i>
 
-        <div class="details-container">
-          <el-table :data="tableData" :show-header="false">
-            <el-table-column prop="key" width="120px"></el-table-column>
-            <el-table-column prop="value"></el-table-column>
-          </el-table>
-        </div>
+        <el-table :data="tableData" :show-header="false">
+          <el-table-column prop="key" width="120px"></el-table-column>
+          <el-table-column prop="value"></el-table-column>
+        </el-table>
       </el-col>
     </el-row>
+
+    <el-button>Logout</el-button>
   </div>
 </template>
 
@@ -79,8 +78,7 @@ export default {
 </script>
 
 <style scoped>
-.profile-image {
-  margin-top: 15px;
+.profile-container {
   text-align: center;
 }
 .el-icon-user-solid {
@@ -90,7 +88,7 @@ export default {
   overflow: hidden;
   padding: 15px;
 }
-.details-container {
-  width: 100%;
+.el-button {
+  margin-top: 20px;
 }
 </style>
