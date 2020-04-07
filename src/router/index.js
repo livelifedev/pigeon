@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+// import store from '../store';
 
 // Containers
 import AppFull from '../containers/AppFull';
@@ -10,6 +11,7 @@ import AppLogin from '../views/AppLogin';
 import BreederRegister from '../views/BreederRegister';
 import BreederSelection from '../views/BreederSelection';
 import BreederProfile from '../views/BreederProfile';
+import BreederAviary from '../views/BreederAviary';
 import BreederHome from '../views/BreederHome';
 
 Vue.use(VueRouter);
@@ -40,6 +42,10 @@ export default new VueRouter({
         {
           path: 'breeder-profile',
           component: BreederProfile
+        },
+        {
+          path: 'breeder-aviary',
+          component: BreederAviary
         },
         {
           path: 'breeder-home',

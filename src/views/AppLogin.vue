@@ -47,7 +47,7 @@ export default {
             await this.loginUser(this.loginForm);
             await this.getCurrentUser();
 
-            router.push('/');
+            router.push('/breeder-home');
           } catch (error) {
             console.error(error);
             this.isSubmitting = false;

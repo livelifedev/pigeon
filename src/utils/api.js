@@ -41,6 +41,8 @@ export const userCurrent = () => {
           email
           pigeons {
             id
+            name
+            element
           }
         }
       }

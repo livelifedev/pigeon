@@ -67,7 +67,7 @@ import { mapActions } from 'vuex';
 import router from '../router';
 
 export default {
-  name: 'BreederSelection',
+  name: 'BreederRegister',
   data() {
     const validatePass = (rule, value, callback) => {
       if (value !== this.registerForm.password) {
