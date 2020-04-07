@@ -2,14 +2,14 @@ import moment from 'moment';
 import { userRegister, userCurrent } from '../../utils/api';
 
 const state = {
-  auth: localStorage.getItem('token'),
+  token: localStorage.getItem('token'),
   currentUser: null,
   pigeon: JSON.parse(sessionStorage.getItem('squabDetails'))
 };
 
 const getters = {
   isLoggedIn: state => !!state.currentUser,
-  isActiveBreeder: state => !!state.pigeon,
+  breederRank: state => state.currentUser.rank,
   currentPigeon: state => state.pigeon,
   avatarElement: state => state.pigeon.element.toLowerCase(),
   pigeonAge: state => moment().diff(moment.unix(state.pigeon.dob), 'days')
@@ -32,7 +32,7 @@ const actions = {
 
 const mutations = {
   setAuth: (state, token) => {
-    state.auth = token;
+    state.token = token;
   },
   setCurrentUser: (state, profile) => {
     state.currentUser = profile;

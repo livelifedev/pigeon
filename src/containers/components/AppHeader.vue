@@ -9,7 +9,7 @@
       ></el-button>
     </div>
     <el-card v-if="isLoggedIn" :body-style="{ padding: '0px' }">
-      <h4 class="rank-text">Novice Breeder</h4>
+      <h4 class="rank-text">{{ breederRank }}</h4>
     </el-card>
     <div v-if="isLoggedIn">
       <el-button
@@ -28,7 +28,7 @@ import router from '../../router';
 
 export default {
   name: 'AppHeader',
-  computed: mapGetters(['isLoggedIn']),
+  computed: mapGetters(['isLoggedIn', 'breederRank']),
   methods: {
     handleOnHome() {
       router.push('/').catch(err => err);

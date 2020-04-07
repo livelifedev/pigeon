@@ -10,13 +10,20 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import { AppHeader } from './components';
 
 export default {
   name: 'AppFull',
   components: {
     AppHeader
-  }
+  },
+  created() {
+    if (this.$store.state.auth.token) {
+      this.getCurrentUser();
+    }
+  },
+  methods: mapActions(['getCurrentUser'])
 };
 </script>
 
