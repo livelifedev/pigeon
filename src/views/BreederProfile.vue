@@ -1,16 +1,16 @@
 <template>
   <div class="profile-container">
     <el-row type="flex" justify="center">
-      <el-col class="details-container" :span="24" :sm="{ span: 12 }">
+      <el-col :span="24" :sm="{ span: 12 }">
         <div class="profile-image">
           <i class="el-icon-user-solid"></i>
         </div>
 
-        <div class="fields-container">
-          <div v-for="field in tableData" :key="field.key">
-            <h5 class="field-name">{{ field.key }}</h5>
-            <span class="field-text">{{ field.value }}</span>
-          </div>
+        <div class="details-container">
+          <el-table :data="tableData" :show-header="false">
+            <el-table-column prop="key" width="120px"></el-table-column>
+            <el-table-column prop="value"></el-table-column>
+          </el-table>
         </div>
       </el-col>
     </el-row>
@@ -28,23 +28,23 @@ export default {
       tableData: [
         {
           key: 'Guild ID:',
-          value: '1'
+          value: ''
         },
         {
           key: 'Breeder Name:',
-          value: '1111'
+          value: ''
         },
         {
           key: 'Rank:',
-          value: 'Novice Breeder'
+          value: ''
         },
         {
           key: 'Email:',
-          value: '111'
+          value: ''
         },
         {
           key: 'Pigeons Bred:',
-          value: '0'
+          value: ''
         }
       ]
     };
@@ -79,11 +79,6 @@ export default {
 </script>
 
 <style scoped>
-.details-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 .profile-image {
   margin-top: 15px;
   text-align: center;
@@ -95,13 +90,7 @@ export default {
   overflow: hidden;
   padding: 15px;
 }
-.field-name {
-  margin: 15px 0 2px;
-}
-.fields-container {
-  /* padding-right: 40px; */
-}
-.field-text {
-  /* font-size: 1.4rem; */
+.details-container {
+  width: 100%;
 }
 </style>
