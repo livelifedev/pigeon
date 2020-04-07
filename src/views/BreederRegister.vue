@@ -1,5 +1,5 @@
 <template>
-  <div class="selection-container">
+  <div class="register-container">
     <el-row type="flex" justify="center">
       <el-col :span="24" :sm="{ span: 12 }">
         <h2>Join the ranks!</h2>

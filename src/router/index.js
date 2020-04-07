@@ -8,6 +8,7 @@ import AppFull from '../containers/AppFull';
 import AppLanding from '../views/AppLanding';
 import BreederRegister from '../views/BreederRegister';
 import BreederSelection from '../views/BreederSelection';
+import BreederProfile from '../views/BreederProfile';
 import BreederHome from '../views/BreederHome';
 
 Vue.use(VueRouter);
@@ -30,6 +31,10 @@ export default new VueRouter({
         {
           path: 'breeder-selection',
           component: BreederSelection
+        },
+        {
+          path: 'breeder-profile',
+          component: BreederProfile
         },
         {
           path: 'breeder-home',
