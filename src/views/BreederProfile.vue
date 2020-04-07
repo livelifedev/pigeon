@@ -14,12 +14,12 @@
       </el-col>
     </el-row>
 
-    <el-button>Logout</el-button>
+    <el-button @click="logout">Logout</el-button>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 import router from '../router';
 
 export default {
@@ -56,29 +56,9 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['registerUser', 'getCurrentUser']),
-
-    handleOnRegister() {
-      this.$refs.form.validate(async valid => {
-        if (valid) {
-          try {
-            this.isSubmitting = true;
-            await this.registerUser(this.form);
-            await this.getCurrentUser();
-
-            router.push('/breeder-selection');
-          } catch (error) {
-            console.error(error);
-            this.isSubmitting = false;
-
-            this.$message({
-              message: 'Unable to complete registration.',
-              type: 'error',
-              center: true
-            });
-          }
-        }
-      });
+    logout() {
+      localStorage.removeItem('token');
+      router.push('/');
     }
   }
 };
