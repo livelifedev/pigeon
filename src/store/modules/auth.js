@@ -38,9 +38,13 @@ const actions = {
   },
   getCurrentUser: async ({ commit }) => {
     const { data } = await userCurrent();
-    const { profile } = data;
+    const profile = { ...data.profile, pigeons: data.profile.pigeons.length };
+    const pigeons = data.profile.pigeons.map(pigeon => ({
+      ...pigeon,
+      dob: `${moment().diff(moment.unix(pigeon.dob), 'days')} days`
+    }));
     commit('setCurrentUser', profile);
-    commit('setOwnedPigeons', profile.pigeons);
+    commit('setOwnedPigeons', pigeons);
   }
 };
 
@@ -49,13 +53,10 @@ const mutations = {
     state.token = token;
   },
   setCurrentUser: (state, profile) => {
-    state.currentUser = { ...profile, pigeons: profile.pigeons.length };
+    state.currentUser = profile;
   },
   setOwnedPigeons: (state, pigeons) => {
-    state.ownedPigeons = pigeons.map(pigeon => ({
-      ...pigeon,
-      dob: `${moment().diff(moment.unix(pigeon.dob), 'days')} days`
-    }));
+    state.ownedPigeons = pigeons;
   },
   setPigeon: (state, pigeon) => {
     state.pigeon = pigeon;

@@ -2,6 +2,14 @@
   <div class="header-container">
     <div>
       <el-button
+        v-if="isLoggedIn"
+        icon="el-icon-house"
+        plain
+        circle
+        @click="handleOnAviary"
+      ></el-button>
+      <el-button
+        v-else
         icon="el-icon-s-home"
         plain
         circle
@@ -32,6 +40,9 @@ export default {
   methods: {
     handleOnHome() {
       router.push('/').catch(err => err);
+    },
+    handleOnAviary() {
+      router.push('/breeder-aviary').catch(err => err);
     },
     handleOnUser(login) {
       if (login) {
