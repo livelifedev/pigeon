@@ -1,14 +1,14 @@
 <template>
-  <div class="home-container">
+  <div class="home-container" v-if="selectedPigeon">
     <el-row>
       <el-col class="graphics-window">
-        <h4 class="pigeon-name">{{ currentPigeon.name }}</h4>
+        <h4 class="pigeon-name">{{ selectedPigeon.name }}</h4>
         <img
-          :src="`./assets/squab-${avatarElement}.svg`"
+          :src="`./assets/squab-${selectedPigeon.element}.svg`"
           alt="Pigeon avatar"
           class="pigeon-avatar"
         />
-        <h4 class="pigeon-age">Age: {{ pigeonAge }} days</h4>
+        <h4 class="pigeon-age">Age: {{ selectedPigeon.dob }}</h4>
       </el-col>
     </el-row>
 
@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import {
   TabsCare,
   TabsAdventure,
@@ -91,9 +91,11 @@ export default {
     };
   },
   created() {
+    this.getSelectedPigeon(this.$route.params.id);
     this.action = this.MENU;
   },
-  computed: mapGetters(['currentPigeon', 'avatarElement', 'pigeonAge'])
+  computed: mapGetters(['selectedPigeon']),
+  methods: mapActions(['getSelectedPigeon'])
 };
 </script>
 

@@ -6,7 +6,7 @@
 
         <div v-if="ownedPigeons">
           <el-card v-for="pigeon in ownedPigeons" :key="pigeon.id">
-            <div class="card-container">
+            <div class="card-container" @click="handleOnPigeon(pigeon.id)">
               <img
                 :src="`./assets/squab-${pigeon.element}.svg`"
                 alt="Pigeon avatar"
@@ -37,6 +37,9 @@ export default {
     ...mapGetters(['ownedPigeons'])
   },
   methods: {
+    handleOnPigeon(id) {
+      router.push(`/breeder-home/${id}`);
+    },
     logout() {
       this.logoutUser();
       router.push('/');
@@ -55,6 +58,7 @@ export default {
 .card-container {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .pigeon-thumb {
   height: 50px;

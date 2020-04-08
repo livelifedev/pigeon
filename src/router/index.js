@@ -48,7 +48,7 @@ export default new VueRouter({
           component: BreederAviary
         },
         {
-          path: 'breeder-home',
+          path: 'breeder-home/:id',
           component: BreederHome,
           beforeEnter: (to, from, next) => {
             if (sessionStorage.getItem('squabDetails')) {

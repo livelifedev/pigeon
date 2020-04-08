@@ -51,3 +51,30 @@ export const userCurrent = () => {
     `
   );
 };
+
+export const pigeonSelected = id => {
+  return graphql(
+    `
+      query singlePigeon {
+        pigeon(id: ${id}) {
+          name
+          flock
+          element
+          dob
+          gender
+          region
+          subBreed
+          bio
+          growth
+          lifeStage {
+            name
+          }
+          health
+          appetite
+          feedSchedule
+          lastFed
+        }
+      }
+    `
+  );
+};
