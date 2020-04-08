@@ -48,7 +48,7 @@ export default {
           },
           {
             key: 'Pigeons Bred:',
-            value: this.currentUser.pigeons.length
+            value: this.currentUser.pigeons
           }
         ];
       }

@@ -42,7 +42,9 @@ export const userCurrent = () => {
           pigeons {
             id
             name
+            flock
             element
+            dob
           }
         }
       }
