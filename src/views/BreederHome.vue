@@ -8,7 +8,7 @@
           alt="Pigeon avatar"
           class="pigeon-avatar"
         />
-        <h4 class="pigeon-age">Age: {{ selectedPigeon.dob }}</h4>
+        <h4 class="pigeon-age">Age: {{ age }}</h4>
       </el-col>
     </el-row>
 
@@ -67,6 +67,7 @@ import {
   TabsProfile,
   ModalPigeondex
 } from './components';
+import { calcAge } from '../utils/pigeonTools';
 
 export default {
   name: 'BreederHome',
@@ -94,7 +95,13 @@ export default {
     this.getSelectedPigeon(this.$route.params.id);
     this.action = this.MENU;
   },
-  computed: mapGetters(['selectedPigeon']),
+  computed: {
+    ...mapGetters(['selectedPigeon']),
+
+    age() {
+      return `${calcAge(this.selectedPigeon.dob)} days`;
+    }
+  },
   methods: mapActions(['getSelectedPigeon'])
 };
 </script>

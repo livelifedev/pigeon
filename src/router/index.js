@@ -49,14 +49,14 @@ export default new VueRouter({
         },
         {
           path: 'breeder-home/:id',
-          component: BreederHome,
-          beforeEnter: (to, from, next) => {
-            if (sessionStorage.getItem('squabDetails')) {
-              next();
-            } else {
-              next('/');
-            }
-          }
+          component: BreederHome
+          // beforeEnter: (to, from, next) => {
+          //   if (sessionStorage.getItem('squabDetails')) {
+          //     next();
+          //   } else {
+          //     next('/');
+          //   }
+          // }
         }
       ]
     },

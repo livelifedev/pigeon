@@ -63,7 +63,7 @@ export default {
     this.step = this.FIRSTSTEP;
   },
   methods: {
-    ...mapActions(['startSession']),
+    ...mapActions(['registerPigeon']),
 
     handleOnNext(details) {
       this.formDetails = { ...this.formDetails, ...details };
@@ -72,16 +72,14 @@ export default {
       this.formDetails = { dob: moment().unix() };
       this.step = this.FIRSTSTEP;
     },
-    handleOnSubmit() {
-      // TODO: Rewrite to post to backend
-      const newDetails = {
+    async handleOnSubmit() {
+      const finalDetails = {
         ...this.formDetails,
-        appetite: calcAppetite(this.formDetails.sub)
+        appetite: calcAppetite(this.formDetails.sub.value)
       };
-      sessionStorage.setItem('squabDetails', JSON.stringify(newDetails));
-      sessionStorage.removeItem('feedingSchedule');
-      this.startSession(newDetails);
-      router.push('/breeder-home');
+
+      await this.registerPigeon(finalDetails);
+      router.push('/breeder-aviary');
     }
   }
 };

@@ -63,11 +63,11 @@ export default {
         },
         {
           key: 'Breed:',
-          value: `${this.formDetails.primary}/${this.formDetails.sub}`
+          value: `${this.formDetails.primary.label}/${this.formDetails.sub.label}`
         },
         {
           key: 'Element:',
-          value: this.formDetails.element
+          value: this.formDetails.element.label
         }
       ]
     };

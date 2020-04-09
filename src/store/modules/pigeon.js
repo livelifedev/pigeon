@@ -1,5 +1,4 @@
-import moment from 'moment';
-import { pigeonSelected } from '../../utils/api';
+import { pigeonCreate, pigeonSelected } from '../../utils/api';
 
 const state = {
   selectedPigeon: null
@@ -10,13 +9,14 @@ const getters = {
 };
 
 const actions = {
+  registerPigeon: async ({ commit }, formDetails) => {
+    const { data } = await pigeonCreate(formDetails);
+    console.log('state', data);
+    commit('addToUserPigeons', data.pigeon, { root: true });
+  },
   getSelectedPigeon: async ({ commit }, id) => {
     const { data } = await pigeonSelected(id);
-    const pigeon = {
-      ...data.pigeon,
-      dob: `${moment().diff(moment.unix(data.pigeon.dob), 'days')} days`
-    };
-    commit('setSelectedPigeon', pigeon);
+    commit('setSelectedPigeon', data.pigeon);
   }
 };
 

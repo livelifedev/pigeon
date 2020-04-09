@@ -52,6 +52,36 @@ export const userCurrent = () => {
   );
 };
 
+export const pigeonCreate = details => {
+  const variables = {
+    pigeon: {
+      name: details.name,
+      flock: details.flock,
+      gender: details.gender,
+      region: details.region,
+      subBreedId: details.sub.value,
+      elementId: details.element.value,
+      dob: details.dob,
+      appetite: details.appetite
+    }
+  };
+
+  return graphql(
+    `
+      mutation pigeonCreate($pigeon: PigeonInput!) {
+        pigeon: createPigeon(pigeon: $pigeon) {
+          id
+          name
+          flock
+          element
+          dob
+        }
+      }
+    `,
+    variables
+  );
+};
+
 export const pigeonSelected = id => {
   return graphql(
     `

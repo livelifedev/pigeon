@@ -20,7 +20,7 @@
             v-for="el in elements"
             :key="el.value"
             :label="el.label"
-            :value="el.label"
+            :value="el"
             :disabled="el.disabled"
           >
           </el-option>
@@ -43,15 +43,16 @@ export default {
   data() {
     return {
       thirdForm: {
-        element: 'Air'
+        element: { value: 1, label: 'Air' }
       },
 
+      // TODO: List should be retrieved from API to keep in sync
       elements: [
-        { value: 'air', label: 'Air' },
-        { value: 'earth', label: 'Earth' },
-        { value: 'fire', label: 'Fire' },
-        { value: 'water', label: 'Water' },
-        { value: 'void', label: 'Void', disabled: true }
+        { value: 1, label: 'Air' },
+        { value: 2, label: 'Earth' },
+        { value: 3, label: 'Fire' },
+        { value: 4, label: 'Water' },
+        { value: 5, label: 'Void', disabled: true }
       ],
 
       rules: {

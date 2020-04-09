@@ -1,26 +1,18 @@
-import moment from 'moment';
 import { userLogin, userRegister, userCurrent } from '../../utils/api';
 
 const state = {
   token: localStorage.getItem('token'),
   currentUser: null,
-  ownedPigeons: null,
-  pigeon: JSON.parse(sessionStorage.getItem('squabDetails'))
+  ownedPigeons: null
 };
 
 const getters = {
   isLoggedIn: state => !!state.currentUser,
   currentUser: state => state.currentUser,
-  currentPigeon: state => state.pigeon,
-  avatarElement: state => state.pigeon.element.toLowerCase(),
-  pigeonAge: state => moment().diff(moment.unix(state.pigeon.dob), 'days'),
   ownedPigeons: state => state.ownedPigeons
 };
 
 const actions = {
-  startSession: ({ commit }, pigeon) => {
-    commit('setPigeon', pigeon);
-  },
   loginUser: async ({ commit }, { email, password }) => {
     const { data } = await userLogin(email, password);
     localStorage.setItem('token', data.token);
@@ -39,12 +31,8 @@ const actions = {
   getCurrentUser: async ({ commit }) => {
     const { data } = await userCurrent();
     const profile = { ...data.profile, pigeons: data.profile.pigeons.length };
-    const pigeons = data.profile.pigeons.map(pigeon => ({
-      ...pigeon,
-      dob: `${moment().diff(moment.unix(pigeon.dob), 'days')} days`
-    }));
     commit('setCurrentUser', profile);
-    commit('setOwnedPigeons', pigeons);
+    commit('setOwnedPigeons', data.profile.pigeons);
   }
 };
 
@@ -58,8 +46,8 @@ const mutations = {
   setOwnedPigeons: (state, pigeons) => {
     state.ownedPigeons = pigeons;
   },
-  setPigeon: (state, pigeon) => {
-    state.pigeon = pigeon;
+  addToUserPigeons: (state, pigeon) => {
+    state.ownedPigeons.push(pigeon);
   }
 };
 

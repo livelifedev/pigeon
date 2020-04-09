@@ -17,7 +17,7 @@
                   <div class="name-text">{{ pigeon.name }}</div>
                   <div>{{ pigeon.flock }} flock</div>
                 </div>
-                <div>{{ pigeon.dob }}</div>
+                <div>{{ displayAge(pigeon.dob) }}</div>
               </div>
             </div>
           </el-card>
@@ -30,12 +30,11 @@
 <script>
 import { mapGetters } from 'vuex';
 import router from '../router';
+import { calcAge } from '../utils/pigeonTools';
 
 export default {
   name: 'BreederAviary',
-  computed: {
-    ...mapGetters(['ownedPigeons'])
-  },
+  computed: mapGetters(['ownedPigeons']),
   methods: {
     handleOnPigeon(id) {
       router.push(`/breeder-home/${id}`);
@@ -43,6 +42,9 @@ export default {
     logout() {
       this.logoutUser();
       router.push('/');
+    },
+    displayAge(dob) {
+      return `${calcAge(dob)} days`;
     }
   }
 };

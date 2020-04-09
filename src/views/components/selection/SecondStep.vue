@@ -24,7 +24,7 @@
             v-for="breed in primaryBreeds"
             :key="breed.value"
             :label="breed.label"
-            :value="breed.label"
+            :value="breed.value"
           >
           </el-option>
         </el-select>
@@ -36,7 +36,7 @@
             v-for="breed in subBreeds"
             :key="breed.value"
             :label="breed.label"
-            :value="breed.label"
+            :value="breed"
             :disabled="breed.disabled"
           >
           </el-option>
@@ -59,21 +59,22 @@ export default {
   data() {
     return {
       secondForm: {
-        primary: 'Pigeon',
-        sub: 'Bird'
+        primary: { value: 0, label: 'Pigeon' },
+        sub: { value: 2, label: 'Bird' }
       },
 
-      primaryBreeds: [{ value: 'pigeon', label: 'Pigeon' }],
+      primaryBreeds: [{ value: 0, label: 'Pigeon' }],
 
+      // TODO: List should be retrieved from API to keep in sync
       subBreeds: [
-        { value: 'amphibian', label: 'Amphibian' },
-        { value: 'bird', label: 'Bird' },
-        { value: 'fish', label: 'Fish' },
-        { value: 'invertebrate', label: 'Invertebrate' },
-        { value: 'mammal', label: 'Mammal' },
-        { value: 'reptile', label: 'Reptile' },
-        { value: 'alien', label: 'Alien', disabled: true },
-        { value: 'mythological', label: 'Mythological', disabled: true }
+        { value: 1, label: 'Amphibian' },
+        { value: 2, label: 'Bird' },
+        { value: 3, label: 'Fish' },
+        { value: 4, label: 'Invertebrate' },
+        { value: 5, label: 'Mammal' },
+        { value: 6, label: 'Reptile' },
+        { value: 7, label: 'Alien', disabled: true },
+        { value: 8, label: 'Mythological', disabled: true }
       ],
 
       rules: {
