@@ -11,7 +11,6 @@ const getters = {
 const actions = {
   registerPigeon: async ({ commit }, formDetails) => {
     const { data } = await pigeonCreate(formDetails);
-    console.log('state', data);
     commit('addToUserPigeons', data.pigeon, { root: true });
   },
   getSelectedPigeon: async ({ commit }, id) => {

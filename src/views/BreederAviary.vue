@@ -5,7 +5,17 @@
         <h3 class="heading">Pigeon Aviary</h3>
 
         <div v-if="ownedPigeons">
-          <el-card v-for="pigeon in ownedPigeons" :key="pigeon.id">
+          <div v-if="!ownedPigeons.length" class="heading">
+            <p class="message">
+              You are currently not raising any pigeons! Please go and register
+              your first pigeon.
+            </p>
+            <el-button type="primary" @click="handleOnRegister">
+              Squab Register
+            </el-button>
+          </div>
+
+          <el-card v-else v-for="pigeon in ownedPigeons" :key="pigeon.id">
             <div class="card-container" @click="handleOnPigeon(pigeon.id)">
               <img
                 :src="`./assets/squab-${pigeon.element}.svg`"
@@ -36,6 +46,9 @@ export default {
   name: 'BreederAviary',
   computed: mapGetters(['ownedPigeons']),
   methods: {
+    handleOnRegister() {
+      router.push('/breeder-selection');
+    },
     handleOnPigeon(id) {
       router.push(`/breeder-home/${id}`);
     },
@@ -75,5 +88,8 @@ export default {
 }
 .name-text {
   font-weight: bolder;
+}
+.message {
+  text-align: justify;
 }
 </style>
