@@ -24,6 +24,7 @@
       <el-col v-else :span="24" :sm="{ span: 14 }">
         <ConfirmStep
           :formDetails="formDetails"
+          :isSubmitting="isSubmitting"
           @onReset="handleOnReset"
           @onSubmit="handleOnSubmit"
         />
@@ -56,7 +57,8 @@ export default {
 
       step: null,
 
-      formDetails: { dob: moment().unix() }
+      formDetails: { dob: moment().unix() },
+      isSubmitting: false
     };
   },
   created() {
@@ -77,9 +79,21 @@ export default {
         ...this.formDetails,
         appetite: calcAppetite(this.formDetails.sub.value)
       };
+      try {
+        this.isSubmitting = true;
+        await this.registerPigeon(finalDetails);
 
-      await this.registerPigeon(finalDetails);
-      router.push('/breeder-aviary');
+        router.push('/breeder-aviary');
+      } catch (error) {
+        console.error(error);
+        this.isSubmitting = false;
+
+        this.$message({
+          message: 'Unable to complete registration.',
+          type: 'error',
+          center: true
+        });
+      }
     }
   }
 };

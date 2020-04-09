@@ -21,7 +21,9 @@
     <div class="button-group">
       <el-button-group>
         <el-button type="danger" @click="onReset">Reset</el-button>
-        <el-button type="primary" @click="onSubmit">Confirm</el-button>
+        <el-button type="primary" :loading="showLoading" @click="onSubmit">
+          Confirm
+        </el-button>
       </el-button-group>
     </div>
   </div>
@@ -36,10 +38,13 @@ export default {
     formDetails: {
       type: Object,
       required: true
-    }
+    },
+    isSubmitting: Boolean
   },
   data() {
     return {
+      showLoading: this.isSubmitting,
+
       tableData: [
         {
           key: 'DOB:',
