@@ -8,8 +8,8 @@
         <el-progress
           :text-inside="true"
           :stroke-width="24"
-          :percentage="5"
-          :color="colors[currentPigeon.element]"
+          :percentage="selectedPigeon.growth"
+          :color="colors[selectedPigeon.element]"
         ></el-progress>
       </el-col>
     </el-row>
@@ -19,7 +19,7 @@
         <h5 class="col-title">LIFE STAGE:</h5>
       </el-col>
       <el-col :span="16">
-        <h5 class="col-text">Hatchling</h5>
+        <h5 class="col-text">{{ selectedPigeon.lifeStage.name }}</h5>
       </el-col>
     </el-row>
 
@@ -28,7 +28,7 @@
         <h5 class="col-title">STATUS:</h5>
       </el-col>
       <el-col :span="16">
-        <h5 class="col-text">Healthy</h5>
+        <h5 class="col-text">{{ selectedPigeon.health }}</h5>
       </el-col>
     </el-row>
 
@@ -46,7 +46,7 @@
         <h5 class="col-title">LAST FED:</h5>
       </el-col>
       <el-col :span="16">
-        <h5 class="col-text">{{ currentPigeon.dob }}</h5>
+        <h5 class="col-text">{{ fed }}</h5>
       </el-col>
     </el-row>
 
@@ -63,27 +63,33 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { calcAge } from '../../../utils/pigeonTools';
 
 export default {
   name: 'FeatureHealth',
   data() {
     return {
+      HUNGERS: ['Overstuffed', 'Full', 'Neutral', 'Hungry', 'Starving'],
+
       colors: {
-        Air: '#B6D4EF',
+        Air: '#CCCCFF',
         Fire: '#DC2226',
         Earth: '#969836',
         Water: '#2DBBED'
-      },
-
-      // TODO: Model out hunger statuses
-      hunger: ['overstuffed', 'full', 'neutral', 'hungry', 'starving'],
-      appetite: 100, // determined fixed value
-      dayIntake: 0 // should meet appetite daily
-
-      // TODO: Model out mood/statuses which are randomly generated and make use of play and sleep
+      }
     };
   },
-  computed: mapGetters(['currentPigeon'])
+  computed: {
+    ...mapGetters(['selectedPigeon']),
+
+    age() {
+      return `${calcAge(this.selectedPigeon.dob)} days`;
+    },
+
+    fed() {
+      return `${calcAge(this.selectedPigeon.lastFed)} days ago`;
+    }
+  }
 };
 </script>
 

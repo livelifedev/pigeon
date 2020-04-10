@@ -4,10 +4,10 @@
       It is important to maintain a daily feeding schedule to nurture a healthy
       growth.
       <span class="info-text">
-        As a {{ `${currentPigeon.primary}/${currentPigeon.sub}` }},
-        {{ currentPigeon.name }} has
-        {{ genAppetiteLabel(currentPigeon.appetite) }} and requires
-        {{ currentPigeon.appetite }}x feeding.
+        As a {{ `Pigeon/${selectedPigeon.subBreed}` }},
+        {{ selectedPigeon.name }} has
+        {{ genAppetiteLabel(selectedPigeon.appetite) }} and requires
+        {{ selectedPigeon.appetite }}x feeding.
       </span>
     </p>
 
@@ -38,7 +38,7 @@
 
     <el-form ref="feedForm" :model="feedForm">
       <el-form-item
-        v-for="meal in currentPigeon.appetite"
+        v-for="meal in selectedPigeon.appetite"
         :key="meal"
         :prop="`meal${meal}`"
         :show-message="false"
@@ -70,7 +70,7 @@
 
     <el-dialog
       custom-class="confirm-dialog"
-      :title="`Feed ${currentPigeon.name}`"
+      :title="`Feed ${selectedPigeon.name}`"
       :visible.sync="isConfirmOpen"
       width="100%"
       center
@@ -112,7 +112,7 @@ export default {
       this.canEdit = true;
     }
   },
-  computed: mapGetters(['currentPigeon']),
+  computed: mapGetters(['selectedPigeon']),
   methods: {
     handleOnSave() {
       this.$refs.feedForm.validate(valid => {
