@@ -108,3 +108,14 @@ export const pigeonSelected = id => {
     `
   );
 };
+
+export const pigeonAddFeed = (id, schedule) => {
+  return graphql(
+    `
+      mutation pigeonAddFeed {
+        feedSchedule: addFeedingSchedule(pigeonId: ${id},
+        content: ${JSON.stringify(schedule)})
+      }
+    `
+  );
+};

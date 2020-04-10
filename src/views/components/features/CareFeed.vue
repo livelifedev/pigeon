@@ -62,9 +62,14 @@
       </el-form-item>
 
       <el-form-item v-if="canEdit">
-        <el-button type="primary" size="small" @click="handleOnSave"
-          >Save</el-button
+        <el-button
+          type="primary"
+          size="small"
+          :loading="isSubmitting"
+          @click="handleOnSave"
         >
+          Save
+        </el-button>
       </el-form-item>
     </el-form>
 
@@ -89,17 +94,17 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import moment from 'moment';
 
 export default {
   name: 'CareFeed',
   data() {
     return {
-      feedingSchedule: JSON.parse(sessionStorage.getItem('feedingSchedule')),
-
       canEdit: false,
       feedForm: {},
+
+      isSubmitting: false,
 
       isFeedingTime: false,
       isConfirmOpen: false
@@ -112,17 +117,33 @@ export default {
       this.canEdit = true;
     }
   },
-  computed: mapGetters(['selectedPigeon']),
+  computed: mapGetters(['selectedPigeon', 'feedingSchedule']),
   methods: {
+    ...mapActions(['attachFeedingSchedule']),
+
     handleOnSave() {
-      this.$refs.feedForm.validate(valid => {
+      this.$refs.feedForm.validate(async valid => {
         if (valid) {
-          sessionStorage.setItem(
-            'feedingSchedule',
-            JSON.stringify(this.feedForm)
-          );
-          this.feedingSchedule = this.feedForm;
-          this.canEdit = false;
+          try {
+            this.isSubmitting = true;
+
+            await this.attachFeedingSchedule({
+              id: this.$route.params.id,
+              formDetails: JSON.stringify(this.feedForm)
+            });
+
+            this.isSubmitting = false;
+            this.canEdit = false;
+          } catch (error) {
+            console.error(error);
+            this.isSubmitting = false;
+
+            this.$message({
+              message: 'Unable to update feed schedule.',
+              type: 'error',
+              center: true
+            });
+          }
         }
       });
     },
