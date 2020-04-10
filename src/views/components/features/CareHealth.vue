@@ -73,9 +73,10 @@ export default {
 
       colors: {
         Air: '#CCCCFF',
-        Fire: '#DC2226',
-        Earth: '#969836',
-        Water: '#2DBBED'
+        Fire: '#CC0000',
+        Earth: '#999A00',
+        Water: '#0299FF',
+        Void: '#9933FF'
       }
     };
   },
