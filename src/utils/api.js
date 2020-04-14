@@ -114,7 +114,20 @@ export const pigeonAddFeed = (id, schedule) => {
     `
       mutation pigeonAddFeed {
         feedSchedule: addFeedingSchedule(pigeonId: ${id},
-        content: ${JSON.stringify(schedule)})
+          content: ${JSON.stringify(schedule)})
+      }
+    `
+  );
+};
+
+export const pigeonFeed = (id, growth, lastFed) => {
+  return graphql(
+    `
+      mutation pigeonFeed {
+        feedSchedule: updatePigeon(pigeonId: ${id}, growth: ${growth}, lastFed: ${lastFed}) {
+          growth,
+          lastFed
+        }
       }
     `
   );

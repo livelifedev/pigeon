@@ -114,13 +114,6 @@ export default {
     };
   },
   created() {
-    // TODO: change lastFed to be array containing last feed time
-    // Check, add points, reset array start of every day
-    // if (this.lastFed.length && this.lastFed.length[0] < moment().unix()) {
-    //  compare feed times to feed schedule (feed schedule is locked after first feed of day)
-    //  calciulate and addd points
-    //  mutation to update feed to empty array
-    // }
     if (this.feedingSchedule) {
       this.feedForm = this.feedingSchedule;
     } else {
@@ -193,7 +186,7 @@ export default {
     },
     goFeed() {
       console.log(moment().unix());
-      // this.isConfirmOpen = false;
+      this.isConfirmOpen = false;
     }
   }
 };
