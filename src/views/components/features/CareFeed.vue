@@ -85,7 +85,10 @@
         It's not yet feeding time, avoid feeding without reason.
       </span>
       <span slot="footer">
-        <el-button type="success" @click="isConfirmOpen = false">
+        <el-button @click="isConfirmOpen = false">
+          Cancel
+        </el-button>
+        <el-button type="success" @click="goFeed">
           Feed
         </el-button>
       </span>
@@ -187,6 +190,10 @@ export default {
         this.isFeedingTime = false;
       }
       this.isConfirmOpen = true;
+    },
+    goFeed() {
+      console.log(moment().unix());
+      // this.isConfirmOpen = false;
     }
   }
 };

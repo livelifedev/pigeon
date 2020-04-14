@@ -8,7 +8,7 @@
         <el-progress
           :text-inside="true"
           :stroke-width="24"
-          :percentage="selectedPigeon.growth"
+          :percentage="totalGrowth"
           :color="colors[selectedPigeon.element]"
         ></el-progress>
       </el-col>
@@ -83,10 +83,10 @@ export default {
   computed: {
     ...mapGetters(['selectedPigeon']),
 
-    age() {
-      return `${calcAge(this.selectedPigeon.dob)} days`;
+    totalGrowth() {
+      // Add age bonus to base growth
+      return this.selectedPigeon.growth + calcAge(this.selectedPigeon.dob) * 2;
     },
-
     fed() {
       return `${calcAge(this.selectedPigeon.lastFed)} days ago`;
     }
