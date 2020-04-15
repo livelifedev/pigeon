@@ -185,11 +185,19 @@ export default {
       this.isConfirmOpen = true;
     },
     async goFeed() {
-      await this.updateFeedGrowth({
-        id: this.$route.params.id,
-        growth: this.isFeedingTime ? 5 : 0,
-        lastFed: moment().unix()
-      }).catch(error => {
+      try {
+        await this.updateFeedGrowth({
+          id: this.$route.params.id,
+          growth: this.isFeedingTime ? 5 : 0,
+          lastFed: moment().unix()
+        });
+
+        this.$message({
+          message: `${this.selectedPigeon.name} ate the meal.`,
+          type: 'success',
+          center: true
+        });
+      } catch (error) {
         console.error(error);
 
         this.$message({
@@ -197,7 +205,7 @@ export default {
           type: 'error',
           center: true
         });
-      });
+      }
       this.isConfirmOpen = false;
     }
   }
