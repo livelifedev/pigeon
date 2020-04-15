@@ -122,7 +122,7 @@ export default {
   },
   computed: mapGetters(['selectedPigeon', 'feedingSchedule']),
   methods: {
-    ...mapActions(['attachFeedingSchedule']),
+    ...mapActions(['attachFeedingSchedule', 'updateFeedGrowth']),
 
     handleOnSave() {
       this.$refs.feedForm.validate(async valid => {
@@ -184,8 +184,20 @@ export default {
       }
       this.isConfirmOpen = true;
     },
-    goFeed() {
-      console.log(moment().unix());
+    async goFeed() {
+      await this.updateFeedGrowth({
+        id: this.$route.params.id,
+        growth: this.isFeedingTime ? 5 : 0,
+        lastFed: moment().unix()
+      }).catch(error => {
+        console.error(error);
+
+        this.$message({
+          message: 'Unable to complete feeding.',
+          type: 'error',
+          center: true
+        });
+      });
       this.isConfirmOpen = false;
     }
   }

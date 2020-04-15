@@ -1,4 +1,9 @@
-import { pigeonCreate, pigeonSelected, pigeonAddFeed } from '../../utils/api';
+import {
+  pigeonCreate,
+  pigeonSelected,
+  pigeonAddFeed,
+  pigeonFeed
+} from '../../utils/api';
 
 const state = {
   selectedPigeon: null
@@ -21,6 +26,10 @@ const actions = {
   attachFeedingSchedule: async ({ commit }, { id, formDetails }) => {
     const { data } = await pigeonAddFeed(id, formDetails);
     commit('updateFeedSchedule', data.feedSchedule);
+  },
+  updateFeedGrowth: async ({ commit }, { id, growth, lastFed }) => {
+    const { data } = await pigeonFeed(id, growth, lastFed);
+    commit('updatePigeon', data.updatedPigeon);
   }
 };
 
@@ -30,6 +39,9 @@ const mutations = {
   },
   updateFeedSchedule: (state, schedule) => {
     state.selectedPigeon.feedSchedule = schedule;
+  },
+  updatePigeon: (state, details) => {
+    state.selectedPigeon = { ...state.selectedPigeon, ...details };
   }
 };
 

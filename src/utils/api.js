@@ -124,7 +124,7 @@ export const pigeonFeed = (id, growth, lastFed) => {
   return graphql(
     `
       mutation pigeonFeed {
-        feedSchedule: updatePigeon(pigeonId: ${id}, growth: ${growth}, lastFed: ${lastFed}) {
+        updatedPigeon: updatePigeon(pigeonId: ${id}, growth: ${growth}, lastFed: ${lastFed}) {
           growth,
           lastFed
         }
