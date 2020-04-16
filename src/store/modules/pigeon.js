@@ -6,7 +6,8 @@ import {
 } from '../../utils/api';
 
 const state = {
-  selectedPigeon: null
+  selectedPigeon: null,
+  currentHunger: null
 };
 
 const getters = {
@@ -30,6 +31,12 @@ const actions = {
   updateFeedGrowth: async ({ commit }, { id, growth, lastFed }) => {
     const { data } = await pigeonFeed(id, growth, lastFed);
     commit('updatePigeon', data.updatedPigeon);
+  },
+  updateHunger: ({ commit }) => {
+    const pigeon = state.selectedPigeon;
+    console.log(JSON.parse(pigeon.feedSchedule));
+    console.log(pigeon.lastFed);
+    commit('setPigeonHunger', 'hunger');
   }
 };
 
@@ -42,6 +49,9 @@ const mutations = {
   },
   updatePigeon: (state, details) => {
     state.selectedPigeon = { ...state.selectedPigeon, ...details };
+  },
+  setPigeonHunger: (state, hunger) => {
+    state.currentHunger = hunger;
   }
 };
 
