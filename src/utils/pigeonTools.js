@@ -35,13 +35,14 @@ export const calcAge = ts => {
 
 export const calcMissedMeals = (lastFed, feedingSchedule) => {
   const currentHour = parseInt(moment().format('HH'));
+  // lastFedHour doesn't take into account what day it was fed
   const lastFedHour = parseInt(moment.unix(lastFed).format('HH'));
   const missedMeals = [];
 
   Object.keys(feedingSchedule).forEach(x => {
     const mealHour = parseInt(feedingSchedule[x].substring(0, 2));
 
-    if (mealHour < currentHour && mealHour > lastFedHour) {
+    if (mealHour <= currentHour && mealHour > lastFedHour) {
       missedMeals.push(mealHour);
     }
   });

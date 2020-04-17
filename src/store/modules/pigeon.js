@@ -1,4 +1,4 @@
-// import moment from 'moment';
+import moment from 'moment';
 import {
   pigeonCreate,
   pigeonSelected,
@@ -15,7 +15,9 @@ const state = {
 const getters = {
   selectedPigeon: state => state.selectedPigeon,
   currentHunger: state => state.currentHunger,
-  feedingSchedule: state => JSON.parse(state.selectedPigeon.feedSchedule)
+  feedingSchedule: state => JSON.parse(state.selectedPigeon.feedSchedule),
+  lastFedFormatted: state =>
+    moment.unix(state.selectedPigeon.lastFed).format('HH:mm')
 };
 
 const actions = {
@@ -37,13 +39,15 @@ const actions = {
   },
   updateHunger: ({ commit }) => {
     const pigeon = state.selectedPigeon;
-    const lastFedDayDiff = calcAge(pigeon.lastFed);
+    // lastFedDayDiff - Only works for within the same month, calcAge() is fallback
+    const lastFedDayDiff =
+      moment().format('D') - moment.unix(pigeon.lastFed).format('D');
     const missedMeals = calcMissedMeals(
       pigeon.lastFed,
       JSON.parse(pigeon.feedSchedule)
     );
 
-    if (lastFedDayDiff > 0) {
+    if (lastFedDayDiff || calcAge(pigeon.lastFed)) {
       commit('setPigeonHunger', HUNGERS.STARVING);
     } else if (missedMeals) {
       commit('setPigeonHunger', HUNGERS.HUNGRY);

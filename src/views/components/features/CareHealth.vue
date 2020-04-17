@@ -79,7 +79,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['selectedPigeon', 'currentHunger']),
+    ...mapGetters(['selectedPigeon', 'currentHunger', 'lastFedFormatted']),
 
     totalGrowth() {
       // Add age bonus to base growth
@@ -87,7 +87,9 @@ export default {
     },
     fed() {
       const lastFedInDays = calcAge(this.selectedPigeon.lastFed);
-      return lastFedInDays ? `${lastFedInDays} days ago` : 'Today';
+      return lastFedInDays
+        ? `${lastFedInDays} days ago`
+        : this.lastFedFormatted;
     }
   }
 };
