@@ -17,7 +17,13 @@ const getters = {
   currentHunger: state => state.currentHunger,
   feedingSchedule: state => JSON.parse(state.selectedPigeon.feedSchedule),
   lastFedFormatted: state =>
-    moment.unix(state.selectedPigeon.lastFed).format('HH:mm')
+    moment.unix(state.selectedPigeon.lastFed).format('HH:mm'),
+  fedToday: state => {
+    const lastFed = state.selectedPigeon.lastFed;
+    const lastFedDayDiff =
+      moment().format('D') - moment.unix(lastFed).format('D');
+    return !(calcAge(lastFed) || lastFedDayDiff);
+  }
 };
 
 const actions = {
@@ -37,17 +43,14 @@ const actions = {
     const { data } = await pigeonFeed(id, growth, lastFed);
     commit('updatePigeon', data.updatedPigeon);
   },
-  updateHunger: ({ commit }) => {
+  updateHunger: ({ commit, getters }) => {
     const pigeon = state.selectedPigeon;
-    // lastFedDayDiff - Only works for within the same month, calcAge() is fallback
-    const lastFedDayDiff =
-      moment().format('D') - moment.unix(pigeon.lastFed).format('D');
     const missedMeals = calcMissedMeals(
       pigeon.lastFed,
       JSON.parse(pigeon.feedSchedule)
     );
 
-    if (lastFedDayDiff || calcAge(pigeon.lastFed)) {
+    if (!getters.fedToday) {
       commit('setPigeonHunger', HUNGERS.STARVING);
     } else if (missedMeals) {
       commit('setPigeonHunger', HUNGERS.HUNGRY);

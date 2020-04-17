@@ -29,6 +29,7 @@
         icon="el-icon-edit"
         circle
         size="small"
+        :disabled="fedToday"
       ></el-button>
     </h4>
 
@@ -104,6 +105,7 @@ export default {
   name: 'CareFeed',
   data() {
     return {
+      isDisabled: false,
       canEdit: false,
       feedForm: {},
 
@@ -120,7 +122,7 @@ export default {
       this.canEdit = true;
     }
   },
-  computed: mapGetters(['selectedPigeon', 'feedingSchedule']),
+  computed: mapGetters(['selectedPigeon', 'feedingSchedule', 'fedToday']),
   methods: {
     ...mapActions(['attachFeedingSchedule', 'updateFeedGrowth']),
 
