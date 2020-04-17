@@ -37,7 +37,7 @@
         <h5 class="col-title">HUNGER:</h5>
       </el-col>
       <el-col :span="16">
-        <h5 class="col-text">Neutral</h5>
+        <h5 class="col-text">{{ currentHunger }}</h5>
       </el-col>
     </el-row>
 
@@ -69,8 +69,6 @@ export default {
   name: 'FeatureHealth',
   data() {
     return {
-      HUNGERS: ['Overstuffed', 'Full', 'Neutral', 'Hungry', 'Starving'],
-
       colors: {
         Air: '#CCCCFF',
         Fire: '#CC0000',
@@ -81,14 +79,15 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['selectedPigeon']),
+    ...mapGetters(['selectedPigeon', 'currentHunger']),
 
     totalGrowth() {
       // Add age bonus to base growth
       return this.selectedPigeon.growth + calcAge(this.selectedPigeon.dob) * 2;
     },
     fed() {
-      return `${calcAge(this.selectedPigeon.lastFed)} days ago`;
+      const lastFedInDays = calcAge(this.selectedPigeon.lastFed);
+      return lastFedInDays ? `${lastFedInDays} days ago` : 'Today';
     }
   }
 };

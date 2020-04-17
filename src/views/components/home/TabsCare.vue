@@ -42,8 +42,10 @@ export default {
   methods: {
     ...mapActions(['updateHunger']),
 
-    handleTabClick: tab => {
-      console.log(tab.name);
+    handleTabClick(tab) {
+      if (tab.name === 'health') {
+        this.updateHunger();
+      }
     }
   }
 };

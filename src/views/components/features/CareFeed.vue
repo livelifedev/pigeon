@@ -171,8 +171,8 @@ export default {
     },
     checkCanFeed() {
       const currentTime = moment().format('HH');
-      const feedTimes = Object.keys(this.feedingSchedule).map(e =>
-        this.feedingSchedule[e].substring(0, 2)
+      const feedTimes = Object.keys(this.feedingSchedule).map(x =>
+        this.feedingSchedule[x].substring(0, 2)
       );
       return feedTimes.includes(currentTime);
     },

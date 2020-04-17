@@ -1,9 +1,11 @@
+// import moment from 'moment';
 import {
   pigeonCreate,
   pigeonSelected,
   pigeonAddFeed,
   pigeonFeed
 } from '../../utils/api';
+import { calcAge, calcMissedMeals, HUNGERS } from '../../utils/pigeonTools';
 
 const state = {
   selectedPigeon: null,
@@ -12,6 +14,7 @@ const state = {
 
 const getters = {
   selectedPigeon: state => state.selectedPigeon,
+  currentHunger: state => state.currentHunger,
   feedingSchedule: state => JSON.parse(state.selectedPigeon.feedSchedule)
 };
 
@@ -34,9 +37,19 @@ const actions = {
   },
   updateHunger: ({ commit }) => {
     const pigeon = state.selectedPigeon;
-    console.log(JSON.parse(pigeon.feedSchedule));
-    console.log(pigeon.lastFed);
-    commit('setPigeonHunger', 'hunger');
+    const lastFedDayDiff = calcAge(pigeon.lastFed);
+    const missedMeals = calcMissedMeals(
+      pigeon.lastFed,
+      JSON.parse(pigeon.feedSchedule)
+    );
+
+    if (lastFedDayDiff > 0) {
+      commit('setPigeonHunger', HUNGERS.STARVING);
+    } else if (missedMeals) {
+      commit('setPigeonHunger', HUNGERS.HUNGRY);
+    } else {
+      commit('setPigeonHunger', HUNGERS.NEUTRAL);
+    }
   }
 };
 
