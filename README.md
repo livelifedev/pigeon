@@ -3,11 +3,11 @@
 Deployed: https://pigeon-guild.herokuapp.com
 backend: https://github.com/livelifedev/pigeon-backend
 
-![landing page](screens/1.png)
-![aviary page](screens/2.png)
-![menu page](screens/3.png)
-![pigeon page](screens/4.png)
-![profile page](screens/5.png)
+![landing page](screens/1.jpg)
+![aviary page](screens/2.jpg)
+![menu page](screens/3.jpg)
+![pigeon page](screens/4.jpg)
+![profile page](screens/5.jpg)
 
 ## Roadmap
 
